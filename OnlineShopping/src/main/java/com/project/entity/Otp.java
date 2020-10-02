@@ -1,5 +1,6 @@
 package com.project.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ public class Otp {
 
 	@Id
 	@GeneratedValue
+	@Column(name="otp_id")
 	private int otpId;
 	
 	private int otpValue;

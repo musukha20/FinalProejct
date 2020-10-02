@@ -3,6 +3,8 @@ package com.project.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +16,10 @@ public class Stock {
 	private int stockId;
 	private int quantity;
 	private double price;
+	
+	@OneToOne
+	@JoinColumn(name="retailer_id")
+	private Retailer retailer;
 	public int getStockId() {
 		return stockId;
 	}
@@ -32,6 +38,7 @@ public class Stock {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
 	
 
 }
