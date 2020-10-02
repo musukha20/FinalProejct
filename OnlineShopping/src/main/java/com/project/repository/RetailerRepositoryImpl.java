@@ -5,6 +5,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.project.entity.Product;
 import com.project.entity.Retailer;
 
 @Repository
@@ -36,7 +37,12 @@ public class RetailerRepositoryImpl implements RetailerRepository {
 		return (Long) entityManager.createQuery("select count(r.id) from Retailer r where r.email =: em").setParameter("em",email)
 				.getSingleResult() ==1 ? true :false;
 	}
-	
-	
+
+	@Override
+	public int addProduct(Product product, Retailer retailer) { //This is the DAO class
+		Product updatedProduct = (Product) entityManager.merge(product);			//this is the entity class
+		return retailer.getId();
+	}
+
 
 }

@@ -4,7 +4,7 @@ public class Status {
 	
 	private boolean status;
 	private String statusMessage;
-	private int retailerId;
+	private int id;
 	
 	public boolean isStatus() {
 		return status;
@@ -18,12 +18,12 @@ public class Status {
 	public void setStatusMessage(String statusMessage) {
 		this.statusMessage = statusMessage;
 	}
-	public int getRetailerId() {
-		return retailerId;
+	public int getId() {
+		return id;
 	}
-	public void setRetailerId(int retailerId) {
-		this.retailerId = retailerId;
+	public void setId(int id) {
+		this.id = id;
 	}
-	
+		
 	
 }
