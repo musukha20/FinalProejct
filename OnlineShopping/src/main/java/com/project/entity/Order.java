@@ -1,15 +1,21 @@
 package com.project.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="wish_list")
-public class Wishlist {
-
+@Table(name="purchase")
+public class Order {
+	
 	@Id
 	@GeneratedValue
-	private int id;
+	@Column(name="order_id")
+	private int orderId;
+	
+	
+	
+
 }
