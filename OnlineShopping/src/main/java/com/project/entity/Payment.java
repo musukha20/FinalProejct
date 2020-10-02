@@ -19,6 +19,7 @@ public class Payment {
 	@Column(name="payment_id")
 	private int paymentId;
 	
+	@Column(name="payment_type")
 	private int paymentType;
 	
 	@OneToMany(mappedBy="payment",cascade = CascadeType.ALL)

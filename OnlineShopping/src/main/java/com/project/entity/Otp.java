@@ -15,6 +15,7 @@ public class Otp {
 	@Column(name="otp_id")
 	private int otpId;
 	
+	@Column(name="otp_value")
 	private int otpValue;
 
 	public int getOtpId() {

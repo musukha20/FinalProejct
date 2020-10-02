@@ -20,10 +20,10 @@ public class OrderDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name="order_detail_id")
-	private int orderDetaiId;
+	private int orderDetailId;
 	private double price;
 	
-	
+	@Temporal(TemporalType.DATE)
 	@Column(name="purchase_date")
 	private LocalDate purchaseDate;
 	private int quantity;
@@ -39,11 +39,12 @@ public class OrderDetail {
 	private Order order;
 		
 	
-	public int getOrderDetaiId() {
-		return orderDetaiId;
+	
+	public int getOrderDetailId() {
+		return orderDetailId;
 	}
-	public void setOrderDetaiId(int orderDetaiId) {
-		this.orderDetaiId = orderDetaiId;
+	public void setOrderDetailId(int orderDetailId) {
+		this.orderDetailId = orderDetailId;
 	}
 	public double getPrice() {
 		return price;

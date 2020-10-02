@@ -3,6 +3,7 @@ package com.project.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,16 +15,20 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name= "tbl_prac_retailer")
+@Table(name= "retailer")
 public class Retailer {
 	
 	@Id
 	@GeneratedValue
+	@Column(name="retailer_id")
 	private int id;
 	
 	private String name;
 	private String address;
 	private String email;
+	
+	@Column(name="phone_no")
+	
 	private int phoneNo;
 	private String password;
 	
@@ -33,6 +38,9 @@ public class Retailer {
 	
 	@OneToMany(mappedBy="retailer",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<Product> product;
+	
+	@OneToMany(mappedBy="retailer", cascade=CascadeType.MERGE)
+	private List<Stock> stock;
 
 	public int getId() {
 		return id;
