@@ -14,7 +14,6 @@ public class Stock {
 	@Id
 	@GeneratedValue
 	
-	
 	private int stockId;
 	private int quantity;
 	private double price;
