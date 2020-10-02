@@ -42,7 +42,7 @@ public class User {
 	private List<Cart> carts;
 	
 	@OneToMany(mappedBy="user",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	private List<Wishlist> wishlist;
+	private List<Wishlist> wishlists;
 	
 	
 	public List<Order> getOrders() {
@@ -57,11 +57,12 @@ public class User {
 	public void setCarts(List<Cart> carts) {
 		this.carts = carts;
 	}
-	public List<Wishlist> getWishlist() {
-		return wishlist;
+	
+	public List<Wishlist> getWishlists() {
+		return wishlists;
 	}
-	public void setWishlist(List<Wishlist> wishlist) {
-		this.wishlist = wishlist;
+	public void setWishlists(List<Wishlist> wishlists) {
+		this.wishlists = wishlists;
 	}
 	public int getId() {
 		return id;
