@@ -5,21 +5,25 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="order_detail")
 public class OrderDetail {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name="order_detail_id")
 	private int orderDetaiId;
 	private double price;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name="purchase_date")
 	private LocalDate purchaseDate;
 	private int quantity;
