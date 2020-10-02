@@ -1,7 +1,5 @@
 package com.project.repository;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import com.project.entity.Retailer;
 
 public interface RetailerRepository {
