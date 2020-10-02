@@ -1,5 +1,7 @@
 package com.project.repository;
 
+import com.project.entity.Product;
+
 import com.project.entity.Retailer;
 
 public interface RetailerRepository {
@@ -11,5 +13,7 @@ public interface RetailerRepository {
 	int findByEmailAndPassword(String email, String password);
 
 	boolean isRetailerPresent(String email);
+	
+	int addProduct(Product product, Retailer retailer);
 
 }

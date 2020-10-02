@@ -7,10 +7,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
@@ -20,7 +22,8 @@ import javax.persistence.Table;
 public class Product {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "myseq")
+    @SequenceGenerator(name = "myseq" , sequenceName = "seq_carpart" , allocationSize =10)
 	@Column(name="product_id")
 	private int productId;
 	
@@ -29,16 +32,16 @@ public class Product {
 	private int quantity;
 	private String category;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="retailer_id")
 	private Retailer retailer;
 	
 	private String brand;
 	private String description;
-	private String product_image1;
-	private String product_image2;
-	private String product_image3;
-	private String product_image4;
+	private String productImage1;
+	private String productImage2;
+	private String productImage3;
+	private String productImage4;
 	
 	@OneToMany(mappedBy="product",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<OrderDetail> orderDetail;
@@ -130,36 +133,37 @@ public class Product {
 		this.description = description;
 	}
 
-	public String getProduct_image1() {
-		return product_image1;
+
+	public String getProductImage1() {
+		return productImage1;
 	}
 
-	public void setProduct_image1(String product_image1) {
-		this.product_image1 = product_image1;
+	public void setProductImage1(String productImage1) {
+		this.productImage1 = productImage1;
 	}
 
-	public String getProduct_image2() {
-		return product_image2;
+	public String getProductImage2() {
+		return productImage2;
 	}
 
-	public void setProduct_image2(String product_image2) {
-		this.product_image2 = product_image2;
+	public void setProductImage2(String productImage2) {
+		this.productImage2 = productImage2;
 	}
 
-	public String getProduct_image3() {
-		return product_image3;
+	public String getProductImage3() {
+		return productImage3;
 	}
 
-	public void setProduct_image3(String product_image3) {
-		this.product_image3 = product_image3;
+	public void setProductImage3(String productImage3) {
+		this.productImage3 = productImage3;
 	}
 
-	public String getProduct_image4() {
-		return product_image4;
+	public String getProductImage4() {
+		return productImage4;
 	}
 
-	public void setProduct_image4(String product_image4) {
-		this.product_image4 = product_image4;
+	public void setProductImage4(String productImage4) {
+		this.productImage4 = productImage4;
 	}
 
 	public List<OrderDetail> getOrderDetail() {

@@ -39,7 +39,7 @@ public class Retailer {
 	@JoinColumn(name = "admin_id")
 	private Admin admin;
 	
-	@OneToMany(mappedBy="retailer",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="retailer")
 	private List<Product> product;
 	
 	@OneToMany(mappedBy="retailer", cascade=CascadeType.MERGE)
