@@ -35,7 +35,6 @@ public class Product {
 	
 	private String brand;
 	private String description;
-	
 	private String product_image1;
 	private String product_image2;
 	private String product_image3;
@@ -43,6 +42,29 @@ public class Product {
 	
 	@OneToMany(mappedBy="product",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<OrderDetail> orderDetail;
+	
+	@OneToMany(mappedBy="productTable",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	private List<Cart> cart;
+
+	@OneToMany(mappedBy="productTable",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	private List<Wishlist> wishlist;
+
+
+	public List<Cart> getCart() {
+		return cart;
+	}
+
+	public void setCart(List<Cart> cart) {
+		this.cart = cart;
+	}
+
+	public List<Wishlist> getWishlist() {
+		return wishlist;
+	}
+
+	public void setWishlist(List<Wishlist> wishlist) {
+		this.wishlist = wishlist;
+	}
 
 	public int getProductId() {
 		return productId;
