@@ -23,7 +23,7 @@ public class OrderDetail {
 	private int orderDetailId;
 	private double price;
 	
-	@Temporal(TemporalType.DATE)
+	
 	@Column(name="purchase_date")
 	private LocalDate purchaseDate;
 	private int quantity;
