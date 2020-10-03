@@ -27,12 +27,11 @@ public class CustomerController {
 	}
 	
 	@PostMapping(path="/placeOrder")
-	public String placeOrder(@RequestBody List<Cart> carts , @PathVariable String payType) {
-		boolean ok=customerService.placeOrder(carts, payType);
-		
-		if(ok==true)
-			return "Order Place Successfully";
-		return "Order place failed";
+	public String placeOrder(@RequestBody List<Cart> carts , @RequestBody String payType) {
+			boolean ok=customerService.placeOrder(carts, payType);
+			if(ok==true)
+				return "Order Place Successfully";
+		    return "Order place failed";
 		
 	}
 }
