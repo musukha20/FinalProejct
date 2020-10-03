@@ -10,7 +10,6 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.project.dto.ProductDto;
 import com.project.entity.Product;
 
 @Repository
@@ -20,8 +19,8 @@ public class ProductDaoImpl implements ProductDao {
 	@PersistenceContext
 	protected EntityManager entityManager;
 	
-	@Override
-	public List<ProductDto> search(String keyword) {
+	//@Override
+	/*public List<ProductDto> search(String keyword) {
 		List<ProductDto> products = new ArrayList<ProductDto>();
 		String query = "select p.* from Product p where brand =:x or category:=y or name like :=z";
 		Query q = (Query) this.entityManager.createQuery(query);
@@ -88,6 +87,6 @@ public class ProductDaoImpl implements ProductDao {
 					productId, productName, productBrand,productPrice));
 		}
 		return products;
-	}
+	} */
  
 }

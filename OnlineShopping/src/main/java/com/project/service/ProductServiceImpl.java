@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.project.dto.ProductDto;
 import com.project.repository.ProductDao;
 
 @Service
@@ -16,7 +15,7 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDao productDao;
 	
-	@Override
+	/*@Override
 	public List<ProductDto> sortProduct(String by, boolean order){
 		return this.productDao.sortProduct(by, order);
 	}
@@ -24,7 +23,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductDto> search(String keyword) {
 		return productDao.search(keyword);
-	}
+	} */
 	
 	
 }

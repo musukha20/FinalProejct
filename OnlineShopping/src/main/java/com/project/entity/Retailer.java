@@ -25,14 +25,14 @@ public class Retailer {
     @SequenceGenerator(name = "myseq" , sequenceName = "seq_carpart" , allocationSize =10)
 	@Column(name="retailer_id")
 	private int id;
-	//Hey Samyak was here.
+	
 	private String name;
 	private String address;
 	private String email;
 	
 	@Column(name="phone_no")
-	
 	private int phoneNo;
+	
 	private String password;
 	
 	@ManyToOne( cascade = CascadeType.MERGE)
