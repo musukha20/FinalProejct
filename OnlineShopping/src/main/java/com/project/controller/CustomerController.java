@@ -17,7 +17,8 @@ public class CustomerController {
 	@GetMapping(path="/addToMyCart/{userId}/{productId}")
 	public Status addToMyCart(@PathVariable String userId,@PathVariable String productId )
 	{
-		
+		Status status = new Status();
+		return status;
 	}
 	
 }
