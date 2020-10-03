@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
-
+import com.project.dto.PlacedOrder;
 import com.project.entity.Cart;
 import com.project.entity.Order;
 import com.project.entity.OrderDetail;
@@ -75,6 +75,17 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 		entityManager.merge(newOrder);   //update order table
 		
 		return true;
+	}
+
+	@Override
+	public List<PlacedOrder> showPlacedOrders(int uId) {
+		// TODO Auto-generated method stub
+		
+		String pType = "";
+		List<PlacedOrder> orders = new ArrayList<PlacedOrder>();
+		User user = this.entityManager.find(User.class, uId);
+		String q = "from Order where user=:x";
+		return null;
 	}
 	
 
