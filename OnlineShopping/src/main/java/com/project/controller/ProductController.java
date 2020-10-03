@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import com.project.dto.ProductDto;
 import com.project.service.ProductService;
 
 @RestController
@@ -25,5 +24,5 @@ public class ProductController {
 	@GetMapping(path="/search/{search}")
 	public List<ProductDto> search(@PathVariable String search) {
 		return this.productService.search(search);
-	}
+	}s
 }

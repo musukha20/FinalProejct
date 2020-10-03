@@ -20,7 +20,7 @@ public class ProductDaoImpl implements ProductDao {
 	@PersistenceContext
 	protected EntityManager entityManager;
 	
-	@Override
+	//@Override
 	public List<ProductDto> search(String keyword) {
 		List<ProductDto> products = new ArrayList<ProductDto>();
 		String query = "select p.* from Product p where brand =:x or category:=y or name like :=z";
