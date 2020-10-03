@@ -18,7 +18,7 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public List<ProductDto> sortProduct(String by, boolean order){
-		return this.productDao.sortProduct(by, order);
+		return this.productDao.sortProductByFactors(by, order);
 	}
 
 	@Override
