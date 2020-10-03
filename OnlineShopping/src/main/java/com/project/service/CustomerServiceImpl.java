@@ -17,8 +17,10 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Autowired
 	private CartDao cartDao;
+	@Autowired
 	private PlaceOrderDao placeOrderDao;
 	
+	@Override
 	public boolean addToCart(int userId,int productId) {
 		// TODO Auto-generated method stub
 		return cartDao.addToCart(userId, productId);

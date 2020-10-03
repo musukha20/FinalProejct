@@ -11,23 +11,22 @@ import com.project.entity.Product;
 import com.project.entity.User;
 
 @Repository
-public class CartDaoImpl implements CartDao{
+public class CartDaoImpl implements CartDao {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
-	
-	public boolean addToCart(int userId,int productId)
-	{
-		User user=this.entityManager.find(User.class, userId);
-		Product product=this.entityManager.find(Product.class, productId);
-		Cart cart=new Cart();
-		cart.setQuantity(1);
-		cart.setProduct(product);
+
+	@Override
+	public boolean addToCart(int userId, int productId) {
+		User user = this.entityManager.find(User.class, userId);
+		Product product = this.entityManager.find(Product.class, productId);
+		Cart cart = new Cart();
+		
+		cart.setQuantity(1); 
 		cart.setUser(user);
+		cart.setProduct(product);
 		this.entityManager.persist(cart);
 		return true;
 	}
-	
-	
+
 }
