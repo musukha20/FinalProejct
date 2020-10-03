@@ -39,5 +39,50 @@ public class ProductDaoImpl implements ProductDao {
 		}
 		return products;
 	}
-
+	
+	public List<ProductDto> sortProduct(String by , boolean order ){
+		//true value is for ascending and false value is for descending
+		List<ProductDto> products = new ArrayList<ProductDto>();
+		Query q = null;
+		if(order == true && by.equalsIgnoreCase("price")) {
+			String commonQuery = "from Product p order by p.price asc";
+			q = (Query)this.entityManager.createQuery(commonQuery);
+		}
+		else if(order == false && by.equalsIgnoreCase("price")) {
+			String commonQuery = "from Product p order by p.price desc";
+			q = (Query)this.entityManager.createQuery(commonQuery);
+		}
+		else if(order == true && by.equalsIgnoreCase("brand")) {
+			String commonQuery = "from Product p order by p.brand asc";
+			q = (Query)this.entityManager.createQuery(commonQuery);
+		}
+		else if(order == false && by.equalsIgnoreCase("brand")) {
+			String commonQuery = "from Product p order by p.brand desc";
+			q = (Query)this.entityManager.createQuery(commonQuery);
+		}
+		else if(order == true && by.equalsIgnoreCase("category")) {
+			String commonQuery = "from Product p order by p.category asc";
+			q = (Query)this.entityManager.createQuery(commonQuery);
+		}
+		else if(order == false && by.equalsIgnoreCase("category")) {
+			String commonQuery = "from Product p order by p.category desc";
+			q = (Query)this.entityManager.createQuery(commonQuery);
+		}
+		List<Product> productentity = q.getResultList();
+		for(Product p : productentity) {
+			int productId = p.getProductId();
+			String productName = p.getName();
+			String productBrand = p.getBrand();
+			Double productPrice = p.getPrice();
+			String productDescription = p.getDescription();
+			String productImage1 = p.getProductImage1();
+			String productImage2 = p.getProductImage2();
+			String productImage3 = p.getProductImage3();
+			String productImage4 = p.getProductImage4();
+			products.add(new ProductDto(productImage1, productImage2, productImage3,productImage4,productDescription,
+					productId, productName, productBrand,productPrice));
+		}
+		return products;
+	}
+ 
 }
