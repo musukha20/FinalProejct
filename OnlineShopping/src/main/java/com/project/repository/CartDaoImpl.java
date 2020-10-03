@@ -18,8 +18,12 @@ public class CartDaoImpl implements CartDao {
 
 	@Override
 	public boolean addToCart(int userId, int productId) {
+		System.out.println(userId);
+		System.out.println(productId);
 		User user = this.entityManager.find(User.class, userId);
 		Product product = this.entityManager.find(Product.class, productId);
+		System.out.println(user);
+		System.out.println(product);
 		Cart cart = new Cart();
 		
 		cart.setQuantity(1); 
