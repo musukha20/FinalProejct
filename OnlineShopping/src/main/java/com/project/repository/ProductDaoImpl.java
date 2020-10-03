@@ -45,7 +45,7 @@ public class ProductDaoImpl implements ProductDao {
 		return products;
 	}
 	
-	public List<ProductDto> sortProduct(String by , boolean order ){
+	public List<ProductDto> sortProductByFactors(String by , boolean order ){
 		//true value is for ascending and false value is for descending
 		List<ProductDto> products = new ArrayList<ProductDto>();
 		Query q = null;
@@ -89,5 +89,7 @@ public class ProductDaoImpl implements ProductDao {
 		}
 		return products;
 	}
+
+	
  
 }
