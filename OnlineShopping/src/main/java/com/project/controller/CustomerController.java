@@ -27,7 +27,7 @@ public class CustomerController {
 	}
 	
 	@PostMapping(path="/placeOrder")
-	public String placeOrder(@RequestBody List<Cart> carts , @RequestBody String payType) {
+	public String placeOrder(@RequestBody List<Cart> carts , @PathVariable String payType) {
 		boolean ok=customerService.placeOrder(carts, payType);
 		
 		if(ok==true)
