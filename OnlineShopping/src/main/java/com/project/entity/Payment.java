@@ -20,7 +20,7 @@ public class Payment {
 	private int paymentId;
 	
 	@Column(name="payment_type")
-	private int paymentType;
+	private String paymentType;
 	
 	@OneToMany(mappedBy="payment",cascade = CascadeType.ALL)
 	private List<Order> order;
@@ -42,12 +42,14 @@ public class Payment {
 		this.paymentId = paymentId;
 	}
 
-	public int getPaymentType() {
+	public String getPaymentType() {
 		return paymentType;
 	}
 
-	public void setPaymentType(int paymentType) {
+	public void setPaymentType(String paymentType) {
 		this.paymentType = paymentType;
 	}
+
+	
 	
 }
