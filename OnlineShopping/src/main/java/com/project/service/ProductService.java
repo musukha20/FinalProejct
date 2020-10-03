@@ -7,5 +7,6 @@ import com.project.dto.ProductDto;
 public interface ProductService {
 
 	List<ProductDto> sortProduct(String by, boolean i);
+	public List<ProductDto> search(String keyword);
 
 }

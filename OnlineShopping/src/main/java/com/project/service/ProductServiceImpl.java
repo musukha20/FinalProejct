@@ -20,4 +20,8 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductDto> sortProduct(String by, boolean order){
 		return this.productDao.sortProduct(by, order);
 	}
+	
+	public List<ProductDto> search(String keyword) {
+		return productDao.search(keyword);
+	}
 }

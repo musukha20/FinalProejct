@@ -21,4 +21,9 @@ public class ProductController {
 	{
 		return this.productService.sortProduct(by, order);
 	}
+	
+	@GetMapping(path="/search/{search}")
+	public List<ProductDto> search(@PathVariable String search) {
+		return this.productService.search(search);
+	}
 }
