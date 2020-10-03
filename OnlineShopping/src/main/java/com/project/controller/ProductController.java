@@ -15,7 +15,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	/*@GetMapping(path="/sortProduct/{by}/{order}")
+	@GetMapping(path="/sortProduct/{by}/{order}")
 	public List<ProductDto> sortProduct(@PathVariable String by, @PathVariable boolean order)
 	{
 		return this.productService.sortProduct(by, order);
@@ -24,5 +24,5 @@ public class ProductController {
 	@GetMapping(path="/search/{search}")
 	public List<ProductDto> search(@PathVariable String search) {
 		return this.productService.search(search);
-	} */
+	}s
 }
