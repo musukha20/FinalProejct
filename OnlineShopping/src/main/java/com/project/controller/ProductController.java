@@ -18,8 +18,8 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@GetMapping(path="/sortProduct/{by}/{order}")
-	public List<ProductDto> sortProduct(@PathVariable String by, @PathVariable boolean order)
+	@GetMapping(path="/sortProduct")
+	public List<ProductDto> sortProduct(@RequestParam("by") String by, @RequestParam("order") boolean order)
 	{
 		return this.productService.sortProduct(by, order);
 	}
