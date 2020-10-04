@@ -23,11 +23,10 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<ProductDto> search(String keyword) {
 		List<ProductDto> products = new ArrayList<ProductDto>();
-		String query = "select p.* from Product p where brand =:x or category:=y or name like :=z";
+		String query = "from Product where brand =:x or category  =:x or name like :y";
 		Query q = (Query) this.entityManager.createQuery(query);
 		q.setParameter("x", keyword);
-		q.setParameter("y", keyword);
-		q.setParameter("z", "%"+keyword+"%");
+		q.setParameter("y", "%"+keyword+"%");
 		List<Product> product = q.getResultList();
 		for(Product p: product) {
 			int productId = p.getProductId();
@@ -40,7 +39,7 @@ public class ProductDaoImpl implements ProductDao {
 			String productImage3 = p.getProductImage3();
 			String productImage4 = p.getProductImage4();
 			products.add(new ProductDto(productImage1, productImage2, productImage3,productImage4,productDescription,
-					productId, productName, productBrand,productPrice));
+					productId, productName, productBrand, productPrice));
 		}
 		return products;
 	}
