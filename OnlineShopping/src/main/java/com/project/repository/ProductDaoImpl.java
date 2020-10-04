@@ -64,14 +64,14 @@ public class ProductDaoImpl implements ProductDao {
 			String commonQuery = "from Product p order by p.brand desc";
 			q = (Query)this.entityManager.createQuery(commonQuery);
 		}
-		else if(order == true && by.equalsIgnoreCase("category")) {
+		/*else if(order == true && by.equalsIgnoreCase("category")) {
 			String commonQuery = "from Product p order by p.category asc";
 			q = (Query)this.entityManager.createQuery(commonQuery);
 		}
 		else if(order == false && by.equalsIgnoreCase("category")) {
 			String commonQuery = "from Product p order by p.category desc";
 			q = (Query)this.entityManager.createQuery(commonQuery);
-		}
+		}*/
 		List<Product> productentity = q.getResultList();
 		for(Product p : productentity) {
 			int productId = p.getProductId();
