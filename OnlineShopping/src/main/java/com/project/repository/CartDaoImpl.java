@@ -21,12 +21,12 @@ public class CartDaoImpl implements CartDao {
 		System.out.println(userId);
 		System.out.println(productId);
 		User user = this.entityManager.find(User.class, userId);
-		Product product = this.entityManager.find(Product.class, productId);
+		Product product =this.entityManager.find(Product.class, productId);
 		System.out.println(user);
 		System.out.println(product);
 		Cart cart = new Cart();
 		
-		cart.setQuantity(1); 
+		cart.setQuantity(18); 
 		cart.setUser(user);
 		cart.setProduct(product);
 		this.entityManager.persist(cart);
