@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.project.dto.AddToCartStatus;
+import com.project.dto.PlacedOrder;
 import com.project.dto.Status;
 import com.project.entity.Cart;
 import com.project.entity.Temp;
@@ -68,5 +69,11 @@ public class CustomerController {
 			}catch(CustomerServiceException e){
 			return "Everything Failed";
 			}
-}
+	}
+	
+	@GetMapping(path="/getMyPlacedOrders")
+	public List<PlacedOrder> showOrderDetails(@RequestParam ("uId") int uId){
+		return customerService.getMyPlacedOrders(uId);
+		
+	}
 }

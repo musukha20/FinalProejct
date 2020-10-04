@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.dto.PlacedOrder;
 import com.project.entity.Cart;
 import com.project.repository.CartDao;
 import com.project.repository.PlaceOrderDao;
@@ -32,6 +33,13 @@ public class CustomerServiceImpl implements CustomerService{
 	public boolean placeOrder(List<Cart> carts, String payType) {
 		// TODO Auto-generated method stub
 		return placeOrderDao.placeOrder(carts,payType);
+	}
+
+
+	@Override
+	public List<PlacedOrder> getMyPlacedOrders(int uId) {
+		// TODO Auto-generated method stub
+		return placeOrderDao.showPlacedOrders(uId);
 	}
 
 }

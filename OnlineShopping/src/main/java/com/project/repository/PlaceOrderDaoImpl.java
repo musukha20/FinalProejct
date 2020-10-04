@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import com.project.dto.PlacedOrder;
@@ -86,9 +87,37 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 		
 		String pType = "";
 		List<PlacedOrder> orders = new ArrayList<PlacedOrder>();
-		User user = this.entityManager.find(User.class, uId);
+		User user = entityManager.find(User.class, uId);
 		String q = "from Order where user=:x";
-		return null;
+		Query query=entityManager.createQuery(q);
+		query.setParameter("x", user);
+		List<Order> myOrders=query.getResultList();
+		
+		if(myOrders.size()!=0) {
+			pType=myOrders.get(0).getPayment().getPaymentType();
+		}
+		
+		for(Order oye : myOrders) {
+			q="from OrderDetail where order=:y";
+			query=entityManager.createQuery(q);
+			query.setParameter("y",oye);
+			List<OrderDetail> orderDetails=query.getResultList();
+			
+			for(OrderDetail o : orderDetails) {
+				int pId=o.getProduct().getProductId();
+				String pName=o.getProduct().getName();
+				String pImage=o.getProduct().getProductImage1();
+				double pPrice=o.getPrice();
+				String pBrand=o.getProduct().getBrand();
+				int pQty=o.getQuantity();
+				String pOrderDate=o.getPurchaseDate().toString();
+				orders.add(new PlacedOrder(pId, pImage, pBrand, pPrice, pOrderDate, pQty, pType, pName));
+			}
+			
+			
+		}
+		
+		return orders;
 	}
 	
 
