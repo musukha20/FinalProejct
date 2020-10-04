@@ -15,6 +15,7 @@ import com.project.entity.OrderDetail;
 import com.project.entity.Payment;
 import com.project.entity.Product;
 import com.project.entity.User;
+import com.project.exception.CustomerServiceException;
 
 
 @Repository
@@ -26,7 +27,7 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 	@Override
 	public boolean placeOrder(List<Cart> carts, String payType) {
 		// TODO Auto-generated method stub
-		
+		try {
 		List<OrderDetail> orderDetailsList=new ArrayList<OrderDetail>();
 		Cart cart=entityManager.find(Cart.class, carts.get(0).getId());
 		
@@ -63,7 +64,7 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 			product.setQuantity(productQty);
 			
 			entityManager.merge(product);    //updating the quantity of product
-			entityManager.remove(c);      //removing this item of the cart
+			entityManager.remove(cart);      //removing this item of the cart
 		}
 			
 		Payment newPayment=new Payment();
@@ -75,8 +76,10 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 		entityManager.merge(newOrder);   //update order table
 		
 		return true;
+	}catch(CustomerServiceException e){
+		return false;
+		}
 	}
-
 	@Override
 	public List<PlacedOrder> showPlacedOrders(int uId) {
 		// TODO Auto-generated method stub

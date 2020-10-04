@@ -50,13 +50,17 @@ public class CustomerController {
 
 
 	@PostMapping(path = "/placeOrder")
-	public String placeOrder(@RequestBody Cart cart, Payment payment) {
-		System.out.println("payType");
-		boolean ok = customerService.placeOrder(cart.getId(), payment.getPaymentType());
+	public String placeOrder(@RequestBody List<Cart> carts,@RequestParam("payType") String payType) {
+		//System.out.println("payType");
+		try {
+		boolean ok = customerService.placeOrder(carts, payType);
 
 		if (ok == true)
 			return "Order Place Successfully";
 		return "Order place failed";
+		}catch(CustomerServiceException e){
+		return "Everything Failed";
 
 	}
+}
 }

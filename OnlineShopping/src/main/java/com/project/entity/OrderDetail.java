@@ -1,5 +1,6 @@
 package com.project.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -15,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="order_detail")
-public class OrderDetail {
+public class OrderDetail implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)

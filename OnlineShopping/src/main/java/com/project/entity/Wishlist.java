@@ -1,5 +1,7 @@
 package com.project.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="wish_list")
-public class Wishlist {
+public class Wishlist implements Serializable{
 
 	@Id
 	@GeneratedValue

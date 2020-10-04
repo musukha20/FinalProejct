@@ -1,5 +1,6 @@
 package com.project.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="purchase")
-public class Order {
+public class Order implements Serializable{
 	
 	@Id
 	@GeneratedValue

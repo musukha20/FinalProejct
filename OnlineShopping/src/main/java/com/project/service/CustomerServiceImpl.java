@@ -30,9 +30,9 @@ public class CustomerServiceImpl implements CustomerService{
 
 
 	@Override
-	public boolean placeOrder(Cart cart, Payment payment) {
+	public boolean placeOrder(List<Cart> carts, String payType) {
 		// TODO Auto-generated method stub
-		return placeOrderDao.placeOrder(cart.getId(), payment.getPaymentType());
+		return placeOrderDao.placeOrder(carts,payType);
 	}
 
 }
