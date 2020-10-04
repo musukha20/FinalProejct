@@ -88,6 +88,25 @@ public class ProductDaoImpl implements ProductDao {
 		}
 		return products;
 	}
+	public ProductDto getProductById(int productId) {         // should be based only on ID. (ngFor)
+		ProductDto product = null;
+		String q = "select name,price,brand,description,productImage1,productImage2,productImage3,productImage4 from ProductDto where productId=:x";
+		Query query = (Query)this.entityManager.createQuery(q);
+		query.setParameter("x", productId);
+		List<Object[]> prod = query.getResultList();
+		for(Object[] p :prod) {
+			String productImage1 = (String)p[0];
+			String productImage2 = (String)p[1];
+			String productImage3 = (String)p[2];
+			String productImage4 = (String)p[3];
+			String description = (String)p[4];
+			String brand = (String)p[5];
+			Double price = (Double)p[6];
+			String name = (String)p[7];
+			product = new ProductDto(productImage1,productImage2,productImage3,productImage4,description,productId,name,brand,price);
+		}
+		return product;
+	}
 
 	
  

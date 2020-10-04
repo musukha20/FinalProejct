@@ -9,4 +9,5 @@ public interface ProductDao {
 
 	public List<ProductDto> search(String keyword);
 	public List<ProductDto> sortProductByFactors(String by , boolean order ); 
+	public ProductDto getProductById(int productId);
 }

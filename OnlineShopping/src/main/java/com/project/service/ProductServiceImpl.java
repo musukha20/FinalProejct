@@ -24,7 +24,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductDto> search(String keyword) {
 		return productDao.search(keyword);
-	} 
+	}
+	
+	@Override
+	public List<ProductDto> toListAllProducts(int productId){
+		return this.productDao.
+	}
 	
 	
 }
