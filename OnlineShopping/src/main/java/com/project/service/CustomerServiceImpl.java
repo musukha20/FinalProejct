@@ -9,8 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.project.dto.PlacedOrder;
 import com.project.entity.Cart;
+import com.project.entity.User;
+import com.project.exception.CustomerServiceException;
 import com.project.repository.CartDao;
 import com.project.repository.PlaceOrderDao;
+import com.project.repository.UserDao;
 
 @Transactional
 @Service
@@ -20,6 +23,20 @@ public class CustomerServiceImpl implements CustomerService{
 	private CartDao cartDao;
 	@Autowired
 	private PlaceOrderDao placeOrderDao;
+	@Autowired
+	private UserDao userDao;
+	
+	
+	@Override
+	public int register(User user) {
+		if(!userDao.isUserPresent(user.getEmail())) {
+			int id=userDao.sava(user);
+			return id;
+		}
+		else
+			throw new CustomerServiceException("User Already Registered");
+	}
+	
 	
 	@Override
 	public boolean addToCart(int userId,int productId) {

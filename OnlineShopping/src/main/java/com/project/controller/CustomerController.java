@@ -13,6 +13,7 @@ import com.project.dto.PlacedOrder;
 import com.project.dto.Status;
 import com.project.entity.Cart;
 import com.project.entity.Temp;
+import com.project.entity.User;
 import com.project.exception.CustomerServiceException;
 import com.project.service.CustomerService;
 
@@ -21,6 +22,27 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
+	
+	@PostMapping(path="/userRegistration")
+	public Status register(@RequestBody User user) {
+		try {
+			int id=customerService.register(user);
+			Status status=new Status();
+			status.setId(id);
+			status.setStatus(true);
+			status.setStatusMessage("Registration Successfull");
+			return status;
+			
+		}
+		catch(CustomerServiceException e) {
+			Status status = new Status();
+			status.setStatus(false);
+			status.setStatusMessage(e.getMessage());
+			return status;
+		}
+	}
+	
+	
 
 	@GetMapping(path = "/addToMyCart")
 	public Status addToMyCart(@RequestParam("userId") int userId, @RequestParam("productId") int productId) {
