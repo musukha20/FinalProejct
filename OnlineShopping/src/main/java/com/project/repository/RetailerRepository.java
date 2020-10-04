@@ -16,4 +16,6 @@ public interface RetailerRepository {
 	
 	int addProduct(Product product, Retailer retailer);
 
+	//int addProduct(Product product);
+
 }

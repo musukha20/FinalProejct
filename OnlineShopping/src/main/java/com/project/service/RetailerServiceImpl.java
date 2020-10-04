@@ -32,6 +32,6 @@ public class RetailerServiceImpl implements RetailerService {
 	@Override
 	public int additionOfProduct(Product product, Retailer retailer) {
 		retailerRepository.addProduct(product, retailer);
-		return retailer.getId();
+		return 0;
 	}
 }

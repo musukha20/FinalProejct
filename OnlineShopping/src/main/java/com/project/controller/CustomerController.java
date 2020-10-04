@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.dto.AddToCartStatus;
 import com.project.dto.Status;
 import com.project.entity.Cart;
+import com.project.entity.Temp;
 import com.project.exception.CustomerServiceException;
 import com.project.service.CustomerService;
 
@@ -47,9 +48,10 @@ public class CustomerController {
 
 
 	@PostMapping(path = "/placeOrder")
-	public String placeOrder(@RequestBody List<Cart> carts,@RequestParam("payType") String payType) {
+	//public String placeOrder(@RequestBody List<Cart> carts,@RequestParam("payType") String payType) {
+	public String placeOrder(@RequestBody Temp temp) {
 		//System.out.println("payType");
-		try {
+		/*try {
 		boolean ok = customerService.placeOrder(carts, payType);
 		if (ok == true)
 			return "Order Place Successfully";
@@ -57,6 +59,14 @@ public class CustomerController {
 		}catch(CustomerServiceException e){
 		return "Everything Failed";
 
-	}
+	} */
+		try {
+			boolean ok = customerService.placeOrder(temp.getCarts(),temp.getPayType());
+			if (ok == true)
+				return "Order Place Successfully";
+			return "Order place failed";
+			}catch(CustomerServiceException e){
+			return "Everything Failed";
+			}
 }
 }

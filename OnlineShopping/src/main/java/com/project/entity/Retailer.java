@@ -43,6 +43,15 @@ public class Retailer implements Serializable{
 	@OneToMany(mappedBy="retailer")
 	private List<Product> product;
 	
+	
+	public List<Stock> getStock() {
+		return stock;
+	}
+
+	public void setStock(List<Stock> stock) {
+		this.stock = stock;
+	}
+
 	@OneToMany(mappedBy="retailer", cascade=CascadeType.MERGE)
 	private List<Stock> stock;
 
@@ -102,4 +111,12 @@ public class Retailer implements Serializable{
 		this.admin = admin;
 	}
 
+	@Override
+	public String toString() {
+		return "Retailer [id=" + id + ", name=" + name + ", address=" + address + ", email=" + email + ", phoneNo="
+				+ phoneNo + ", password=" + password + ", admin=" + admin + ", product=" + product + ", stock=" + stock
+				+ "]";
+	}
+
+	
 }

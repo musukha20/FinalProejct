@@ -40,8 +40,10 @@ public class RetailerRepositoryImpl implements RetailerRepository {
 
 	@Override
 	public int addProduct(Product product, Retailer retailer) { //This is the DAO class
+		//public int addProduct(Product product) {
+		
 		Product updatedProduct = (Product) entityManager.merge(product);			//this is the entity class
-		return retailer.getId();
+		return 0;
 	}
 
 
