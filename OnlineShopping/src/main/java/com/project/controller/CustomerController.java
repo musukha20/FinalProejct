@@ -52,7 +52,7 @@ public class CustomerController {
 	@PostMapping(path = "/placeOrder")
 	public String placeOrder(@RequestBody Cart cart, Payment payment) {
 		System.out.println("payType");
-		boolean ok = customerService.placeOrder(cart.getId(), payment.getPaymentType());
+		boolean ok = customerService.placeOrder(cart, payment);
 
 		if (ok == true)
 			return "Order Place Successfully";

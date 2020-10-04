@@ -47,7 +47,7 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 			orderDetails.setQuantity(cart.getProduct().getQuantity());
 			orderDetails.setPrice(cart.getProduct().getPrice());
 			orderDetails.setOrder(newOrder);
-			orderDetails.setProduct(c.getProduct());
+			orderDetails.setProduct(cart.getProduct());
 			
 			entityManager.persist(orderDetails);  //adding new orderDetails
 			
@@ -63,7 +63,7 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 			product.setQuantity(productQty);
 			
 			entityManager.merge(product);    //updating the quantity of product
-			entityManager.remove(c);      //removing this item of the cart
+			entityManager.remove(cart);      //removing this item of the cart
 		}
 			
 		Payment newPayment=new Payment();
