@@ -4,16 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.project.dto.AddToCartStatus;
 import com.project.dto.Status;
 import com.project.entity.Cart;
-import com.project.entity.Payment;
 import com.project.exception.CustomerServiceException;
 import com.project.service.CustomerService;
 
@@ -50,13 +47,16 @@ public class CustomerController {
 
 
 	@PostMapping(path = "/placeOrder")
-	public String placeOrder(@RequestBody Cart cart, Payment payment) {
-		System.out.println("payType");
-		boolean ok = customerService.placeOrder(cart, payment);
-
+	public String placeOrder(@RequestBody List<Cart> carts,@RequestParam("payType") String payType) {
+		//System.out.println("payType");
+		try {
+		boolean ok = customerService.placeOrder(carts, payType);
 		if (ok == true)
 			return "Order Place Successfully";
 		return "Order place failed";
+		}catch(CustomerServiceException e){
+		return "Everything Failed";
 
 	}
+}
 }

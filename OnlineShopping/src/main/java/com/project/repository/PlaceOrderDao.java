@@ -6,6 +6,6 @@ import com.project.entity.Cart;
 
 public interface PlaceOrderDao {
 	
-	public boolean placeOrder(int i, String payType);
+	public boolean placeOrder(List<Cart> carts, String payType);
 	public List<PlacedOrder> showPlacedOrders(int uId);
 }
