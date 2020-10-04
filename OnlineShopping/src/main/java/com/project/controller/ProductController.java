@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.dto.ProductDto;
@@ -23,8 +24,8 @@ public class ProductController {
 		return this.productService.sortProduct(by, order);
 	}
 	
-	@GetMapping(path="/search/{search}")
-	public List<ProductDto> search(@PathVariable String search) {
+	@GetMapping(path="/search")
+	public List<ProductDto> search(@RequestParam("search") String search) {
 		return this.productService.search(search);
 	}
 }
