@@ -26,7 +26,7 @@ public class CartDaoImpl implements CartDao {
 		System.out.println(product);
 		Cart cart = new Cart();
 		
-		cart.setQuantity(18); 
+		cart.setQuantity(1); // be default we set it to 1
 		cart.setUser(user);
 		cart.setProduct(product);
 		this.entityManager.persist(cart);

@@ -45,7 +45,7 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 			
 			OrderDetail orderDetails =new OrderDetail();
 			orderDetails.setPurchaseDate(LocalDate.now());
-			orderDetails.setQuantity(cart.getProduct().getQuantity());
+			orderDetails.setQuantity(cart.getQuantity());
 			orderDetails.setPrice(cart.getProduct().getPrice());
 			orderDetails.setOrder(newOrder);
 			orderDetails.setProduct(cart.getProduct());
