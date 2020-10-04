@@ -63,7 +63,7 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 			product.setQuantity(productQty);
 			
 			entityManager.merge(product);    //updating the quantity of product
-			entityManager.remove(cart);      //removing this item of the cart
+			entityManager.remove(c);      //removing this item of the cart
 		}
 			
 		Payment newPayment=new Payment();
