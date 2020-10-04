@@ -24,7 +24,8 @@ public class CustomerController {
 
 	@GetMapping(path = "/addToMyCart")
 	public Status addToMyCart(@RequestParam("userId") int userId, @RequestParam("productId") int productId) {
-
+     System.out.println(userId);
+     System.out.println(productId);
 		try {
 			boolean ok = customerService.addToCart(userId, productId);
 			Status s = new Status();
