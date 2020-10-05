@@ -63,6 +63,14 @@ public class Retailer implements Serializable{
 		this.id = id;
 	}
 
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
+
 	public String getName() {
 		return name;
 	}
