@@ -25,16 +25,16 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.search(keyword);
 	}
 
-	/*@Override
+	@Override
 	public ProductDto toListAllProducts(int productId) {
 		
 		return this.productDao.getProductById(productId);
-	} */
+	} 
 	
-	public ProductDto toListAllProducts() {
+	/*public ProductDto toListAllProducts() {
 		
 		return this.productDao.getProductById();
-	}
+	}*/
 	
 	
 }

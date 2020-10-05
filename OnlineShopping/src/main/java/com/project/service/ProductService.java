@@ -8,7 +8,7 @@ public interface ProductService {
 
 	public List<ProductDto> sortProduct(String by, boolean order);
 	public List<ProductDto> search(String keyword);
-	//ProductDto toListAllProducts(int productId); 
-	ProductDto toListAllProducts(); 
+	ProductDto toListAllProducts(int productId); 
+	//ProductDto toListAllProducts(); 
 
 }
