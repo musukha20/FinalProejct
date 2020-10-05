@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.project.dto.ProductDto;
 import com.project.repository.ProductDao;
 
@@ -26,13 +25,16 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.search(keyword);
 	}
 
-	@Override
-	public List<ProductDto> toListAllProducts(int productId) {
-		// TODO Auto-generated method stub
-		return null;
+	/*@Override
+	public ProductDto toListAllProducts(int productId) {
+		
+		return this.productDao.getProductById(productId);
+	} */
+	
+	public ProductDto toListAllProducts() {
+		
+		return this.productDao.getProductById();
 	}
-	
-	
 	
 	
 }
