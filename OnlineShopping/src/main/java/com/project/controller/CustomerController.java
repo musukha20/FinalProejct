@@ -3,6 +3,9 @@ package com.project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,8 +49,6 @@ public class CustomerController {
 
 	@GetMapping(path = "/addToMyCart")
 	public Status addToMyCart(@RequestParam("userId") int userId, @RequestParam("productId") int productId) {
-     System.out.println(userId);
-     System.out.println(productId);
 		try {
 			boolean ok = customerService.addToCart(userId, productId);
 			Status s = new Status();
@@ -68,6 +69,30 @@ public class CustomerController {
 			return s;
 		}
 	}
+	
+	@GetMapping(path = "/updateMyCart") //passed
+	public String updateMyCart(@RequestParam("cartId") int cartId, @RequestParam("addOrMinus") int addOrMinus)
+	{
+		boolean ok = this.customerService.updateCart(cartId,addOrMinus);
+		if(ok==true)
+			return "Cart Updated Successful";
+		return "Cannot Update Cart";
+	}
+	
+	@DeleteMapping(path = "/deleteMyCart") //passed
+	public String deleteMyCart(@RequestParam("cartId")int cId)
+	{
+		try
+		{
+			boolean ok = this.customerService.deleteCart(cId);
+			return "Cart Deleted";
+		}
+		catch(Exception e)
+		{
+			return e.getMessage();
+		}
+	}
+
 
 
 	@PostMapping(path = "/placeOrder")
@@ -83,6 +108,9 @@ public class CustomerController {
 		}
 
 	} 
+	
+	
+
 		
 	
 	@GetMapping(path="/getMyPlacedOrders")

@@ -1,23 +1,29 @@
 package com.project.controller;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.dto.PicUpload;
+import com.project.dto.ProductDto;
 import com.project.entity.Retailer;
 import com.project.dto.AddProductStatus;
 import com.project.dto.Status;
 import com.project.entity.Product;
 import com.project.entity.Retailer;
 import com.project.exception.RetailerServiceException;
+import com.project.service.ProductService;
 import com.project.service.RetailerService;
 
 @RestController
@@ -26,6 +32,9 @@ public class RetailerController {
 	
 	@Autowired
 	private RetailerService retailerService;
+	
+	@Autowired
+	private ProductService productService;
 	
 	@PostMapping(path="/register")
 	public Status register(@RequestBody Retailer retailer) {
@@ -63,34 +72,33 @@ public class RetailerController {
 		}
 	}
 	
-	@PostMapping("/pic-upload")
-	//public Status picUpload(@RequestParam("customerId") int customerId
-	public Status picUpload(PicUpload picUpload) {
-		String imageUploadLocation="d:/uploads/"; // should not be hardcoded like this
-		String fileName1 = picUpload.getProductImage1().getOriginalFilename();
-		String fileName2 = picUpload.getProductImage2().getOriginalFilename();
-		String fileName3 = picUpload.getProductImage3().getOriginalFilename();
-		String fileName4 = picUpload.getProductImage4().getOriginalFilename();
-		String targetFile = imageUploadLocation + fileName;
-		try {
-			FileCopyUtils.copy(picUpload.getProfilePic().getInputStream(), new FileOutputStream(targetFile));
-		}
-		catch(IOException e) {
-			e.printStackTrace();
-			Status status = new Status();
-			status.setStatus(false);
-			status.setStatusMessage("Pic Upload failed..");
-			return status;
-		}
-		
-		Retailer retailer = retailerService.get(picUpload.getCustomerId());
-		retailer.setProfilePic(fileName);
-		retailerService.update(retailer);
-		
-		Status status = new Status();
-		status.setStatus(true);
-		status.setStatusMessage("Pic Upload Successfully");
-		return status;
+	@GetMapping("/productdisplay")
+	public ProductDto profile(@RequestParam("productId") int id, HttpServletRequest request){
+	//fetching customer data from db
+		ProductDto product=productService.get(id);
+		//Retailer retailer= retailerService.get(id);
+	//Customer customer = customerService.get(id);
+
+	//reading the project's deployed folder location
+	String projPath = request.getServletContext().getRealPath("/");
+	System.out.println(projPath); //this will help you understand the above line
+	String tempDownloadPath = projPath + "/downloads/";
+	// creating a folder within the project where we will place the profile pic of the customer getting fetched
+	File f = new File(tempDownloadPath);
+	if(!f.exists())
+	f.mkdir();
+	String targetFile1 = tempDownloadPath + product.getProductImage1();
+	//the original image location
+	String sourceFile = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage1();
+	try {
+	FileCopyUtils.copy(new File(sourceFile), new File(targetFile1));
+	}
+	catch(IOException e) {
+	e.printStackTrace();
+	//maybe for this customer no profile pic
+	}
+	return product;
+
 	}
 	
 }

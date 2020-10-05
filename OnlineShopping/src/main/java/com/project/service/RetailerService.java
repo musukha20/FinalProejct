@@ -9,6 +9,8 @@ public interface RetailerService {
 	
 	public int additionOfProduct(Product product, Retailer retailer);
 
+	Retailer get(int id);
+
 	
 
 }

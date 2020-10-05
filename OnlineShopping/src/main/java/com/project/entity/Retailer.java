@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name= "retailer")
@@ -41,6 +43,7 @@ public class Retailer implements Serializable{
 	private Admin admin;
 	
 	@OneToMany(mappedBy="retailer")
+	@JsonIgnore
 	private List<Product> product;
 	
 	

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.project.dto.PlacedOrder;
 import com.project.entity.Cart;
 import com.project.entity.User;
+import com.project.exception.CartException;
 import com.project.exception.CustomerServiceException;
 import com.project.repository.CartDao;
 import com.project.repository.PlaceOrderDao;
@@ -44,6 +45,21 @@ public class CustomerServiceImpl implements CustomerService{
 		return cartDao.addToCart(userId, productId);
         
 	}
+	
+	@Override
+	public boolean updateCart(int cId, int addOrMinus) {
+		// TODO Auto-generated method stub
+		return this.cartDao.updateCart(cId,addOrMinus);
+	}
+	
+	@Override
+	public boolean deleteCart(int cartId) throws CartException {
+		// TODO Auto-generated method stub
+		return this.cartDao.deleteCart(cartId);
+	}
+	
+
+
 
 
 	@Override
@@ -58,5 +74,7 @@ public class CustomerServiceImpl implements CustomerService{
 		// TODO Auto-generated method stub
 		return placeOrderDao.showPlacedOrders(uId);
 	}
+	
+	
 
 }

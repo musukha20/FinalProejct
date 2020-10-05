@@ -10,5 +10,6 @@ public interface ProductService {
 	public List<ProductDto> search(String keyword);
 	ProductDto toListAllProducts(int productId); 
 	//ProductDto toListAllProducts(); 
+	ProductDto get(int id);
 
 }

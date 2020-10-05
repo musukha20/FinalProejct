@@ -34,4 +34,19 @@ public class RetailerServiceImpl implements RetailerService {
 		retailerRepository.addProduct(product, retailer);
 		return 0;
 	}
+	
+	@Override
+	public Retailer get(int id) {
+	Retailer retailer = retailerRepository.findById(id);
+	if(retailer != null) {
+	return retailer;
+	}
+	else
+	throw new RetailerServiceException("No retailers with id "+id);
+	}
+
+	/*@Override
+	public void update(Retailer retailer) {
+	RetailerRepository.save(retailer);
+	}*/
 }

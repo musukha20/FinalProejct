@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.project.dto.ProductDto;
+import com.project.entity.Product;
+import com.project.entity.Retailer;
+import com.project.exception.RetailerServiceException;
 import com.project.repository.ProductDao;
 
 @Service
@@ -35,6 +38,14 @@ public class ProductServiceImpl implements ProductService {
 		
 		return this.productDao.getProductById();
 	}*/
-	
+	@Override
+	public ProductDto get(int id) {
+	ProductDto product = productDao.getProductById(id);
+	if(product != null) {
+	return product;
+	}
+	else
+	throw new RetailerServiceException("No retailers with id "+id);
+	}
 	
 }
