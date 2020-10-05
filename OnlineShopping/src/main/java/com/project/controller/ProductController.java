@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.project.dto.ProductDto;
 import com.project.service.ProductService;
 
@@ -28,4 +27,16 @@ public class ProductController {
 	public List<ProductDto> search(@RequestParam("search") String search) {
 		return this.productService.search(search);
 	}
+	
+	/*@GetMapping(path = "/getProductById") 
+	public ProductDto getProductById(@RequestParam("pId") String pId)
+	{
+		return this.productService.toListAllProducts(Integer.parseInt(pId));
+	} */
+	
+	@GetMapping(path = "/getProduct") 
+	public ProductDto getProductById()
+	{
+		return this.productService.toListAllProducts();
+	} 
 }

@@ -1,15 +1,13 @@
 package com.project.repository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.project.dto.ProductDto;
 import com.project.entity.Product;
 
@@ -88,22 +86,48 @@ public class ProductDaoImpl implements ProductDao {
 		}
 		return products;
 	}
-	public ProductDto getProductById(int productId) {         // should be based only on ID. (ngFor)
-		ProductDto product = null;
-		String q = "select name,price,brand,description,productImage1,productImage2,productImage3,productImage4 from ProductDto where productId=:x";
+	
+	
+	/* public ProductDto getProductById(int productId) {         // should be based only on ID. (ngFor)
+		ProductDto product = null; //this diplays all the products in the page 
+		String q = "select name,price,brand,description,productImage1, productImage2, productImage3, productImage4,productId from Product where productId=:x";
 		Query query = (Query)this.entityManager.createQuery(q);
 		query.setParameter("x", productId);
 		List<Object[]> prod = query.getResultList();
+		//System.out.println();
 		for(Object[] p :prod) {
-			String productImage1 = (String)p[0];
-			String productImage2 = (String)p[1];
-			String productImage3 = (String)p[2];
-			String productImage4 = (String)p[3];
-			String description = (String)p[4];
-			String brand = (String)p[5];
-			Double price = (Double)p[6];
-			String name = (String)p[7];
-			product = new ProductDto(productImage1,productImage2,productImage3,productImage4,description,productId,name,brand,price);
+			System.out.println("Products :"+p[4]+p[8]+Arrays.toString(p));
+			String pName = 	(String) p[0];
+			Double pPrice =  Double.parseDouble(String.valueOf(p[1]));
+			String pBrand = (String) p[2];
+			String pDescription = (String) p[3];
+			String pImage1 = (String) p[4];
+			String pImage2 = (String) p[5];
+			String pImage3 = (String) p[6];
+			String pImage4 = (String) p[7];
+			product = new ProductDto(pImage1, pImage2, pImage3, pImage4, pDescription, productId, pName, pBrand, pPrice);
+		}
+		return product;
+	} */
+	
+	public ProductDto getProductById() {         // should be based only on ID. (ngFor)
+		ProductDto product = null; //this diplays all the products in the page 
+		String q = "select name,price,brand,description,productImage1, productImage2, productImage3, productImage4,productId from Product ";
+		Query query = (Query)this.entityManager.createQuery(q);
+		List<Object[]> prod = query.getResultList();
+		//System.out.println();
+		for(Object[] p :prod) {
+			System.out.println("Products :"+p[4]+p[8]+Arrays.toString(p));
+			String pName = 	(String) p[0];
+			Double pPrice =  Double.parseDouble(String.valueOf(p[1]));
+			String pBrand = (String) p[2];
+			String pDescription = (String) p[3];
+			String pImage1 = (String) p[4];
+			String pImage2 = (String) p[5];
+			String pImage3 = (String) p[6];
+			String pImage4 = (String) p[7];
+			int pId = Integer.parseInt(String.valueOf(p[8]));
+			product = new ProductDto(pImage1, pImage2, pImage3, pImage4, pDescription, pId, pName, pBrand, pPrice);
 		}
 		return product;
 	}
