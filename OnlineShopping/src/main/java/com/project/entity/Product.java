@@ -175,14 +175,14 @@ public class Product implements Serializable{
 		this.orderDetail = orderDetail;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [productId=" + productId + ", name=" + name + ", price=" + price + ", quantity=" + quantity
-				+ ", category=" + category + ", retailer=" + retailer + ", brand=" + brand + ", description="
-				+ description + ", productImage1=" + productImage1 + ", productImage2=" + productImage2
-				+ ", productImage3=" + productImage3 + ", productImage4=" + productImage4 + ", orderDetail="
-				+ orderDetail + ", cart=" + cart + ", wishlist=" + wishlist + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Product [productId=" + productId + ", name=" + name + ", price=" + price + ", quantity=" + quantity
+//				+ ", category=" + category + ", retailer=" + retailer + ", brand=" + brand + ", description="
+//				+ description + ", productImage1=" + productImage1 + ", productImage2=" + productImage2
+//				+ ", productImage3=" + productImage3 + ", productImage4=" + productImage4 + ", orderDetail="
+//				+ orderDetail + ", cart=" + cart + ", wishlist=" + wishlist + "]";
+//	}
 	
      
 }
