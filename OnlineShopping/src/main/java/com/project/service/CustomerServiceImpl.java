@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.project.dto.PlacedOrder;
@@ -60,8 +61,6 @@ public class CustomerServiceImpl implements CustomerService{
 	
 
 
-
-
 	@Override
 	public boolean placeOrder(List<Cart> carts, String payType) {
 		// TODO Auto-generated method stub
@@ -74,7 +73,18 @@ public class CustomerServiceImpl implements CustomerService{
 		// TODO Auto-generated method stub
 		return placeOrderDao.showPlacedOrders(uId);
 	}
-	
-	
 
+
+	@Override
+	public User login(String email, String password) {
+		try {
+            int id = userDao.findByEmailPassword(email, password);
+            User student = userDao.findById(id);
+            return student;
+        }
+        catch(EmptyResultDataAccessException e) {
+            throw new CustomerServiceException("Cannot Login.Incorrect eamil/password");
+            
+        }
+    }
 }

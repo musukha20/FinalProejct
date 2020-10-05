@@ -10,5 +10,7 @@ public interface UserDao {
 	int sava(User user);
 	public boolean isUserPresent(String email);
 	public List<Cart> getCartOfUser(int uId);
+	int findByEmailPassword(String email, String password);
+	User findById(int id);
 
 }
