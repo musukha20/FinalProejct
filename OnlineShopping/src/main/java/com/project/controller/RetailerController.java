@@ -1,12 +1,18 @@
 package com.project.controller;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.dto.PicUpload;
+import com.project.entity.Retailer;
 import com.project.dto.AddProductStatus;
 import com.project.dto.Status;
 import com.project.entity.Product;
@@ -55,6 +61,36 @@ public class RetailerController {
 			status.setStatusMessage(e.getMessage());
 			return status;
 		}
+	}
+	
+	@PostMapping("/pic-upload")
+	//public Status picUpload(@RequestParam("customerId") int customerId
+	public Status picUpload(PicUpload picUpload) {
+		String imageUploadLocation="d:/uploads/"; // should not be hardcoded like this
+		String fileName1 = picUpload.getProductImage1().getOriginalFilename();
+		String fileName2 = picUpload.getProductImage2().getOriginalFilename();
+		String fileName3 = picUpload.getProductImage3().getOriginalFilename();
+		String fileName4 = picUpload.getProductImage4().getOriginalFilename();
+		String targetFile = imageUploadLocation + fileName;
+		try {
+			FileCopyUtils.copy(picUpload.getProfilePic().getInputStream(), new FileOutputStream(targetFile));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+			Status status = new Status();
+			status.setStatus(false);
+			status.setStatusMessage("Pic Upload failed..");
+			return status;
+		}
+		
+		Retailer retailer = retailerService.get(picUpload.getCustomerId());
+		retailer.setProfilePic(fileName);
+		retailerService.update(retailer);
+		
+		Status status = new Status();
+		status.setStatus(true);
+		status.setStatusMessage("Pic Upload Successfully");
+		return status;
 	}
 	
 }
