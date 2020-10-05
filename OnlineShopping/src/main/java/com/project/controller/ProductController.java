@@ -28,15 +28,16 @@ public class ProductController {
 		return this.productService.search(search);
 	}
 	
-	/*@GetMapping(path = "/getProductById") 
+	@GetMapping(path = "/getProductById") 
 	public ProductDto getProductById(@RequestParam("pId") String pId)
 	{
 		return this.productService.toListAllProducts(Integer.parseInt(pId));
-	} */
+	} 
 	
-	@GetMapping(path = "/getProduct") 
+	/*@GetMapping(path = "/getProduct") 
 	public ProductDto getProductById()
 	{
 		return this.productService.toListAllProducts();
-	} 
+	} */
+	
 }

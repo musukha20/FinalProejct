@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.project.dto.ProductDto;
 import com.project.entity.Product;
 
@@ -20,27 +22,28 @@ public class ProductDaoImpl implements ProductDao {
 	
 	@Override
 	public List<ProductDto> search(String keyword) {
-		List<ProductDto> products = new ArrayList<ProductDto>();
-		String query = "from Product where brand =:x or category  =:x or name like :y";
-		Query q = (Query) this.entityManager.createQuery(query);
-		q.setParameter("x", keyword);
-		q.setParameter("y", "%"+keyword+"%");
-		List<Product> product = q.getResultList();
-		for(Product p: product) {
-			int productId = p.getProductId();
-			String productImage1 = p.getProductImage1();
-			String productName = p.getName();
-			String productBrand = p.getBrand();
-			Double productPrice = p.getPrice();
-			String productDescription = p.getDescription();
-			String productImage2 = p.getProductImage2();
-			String productImage3 = p.getProductImage3();
-			String productImage4 = p.getProductImage4();
-			products.add(new ProductDto(productImage1, productImage2, productImage3,productImage4,productDescription,
-					productId, productName, productBrand, productPrice));
-		}
-		return products;
+	List<ProductDto> products = new ArrayList<ProductDto>();
+	String query = "from Product where brand =:x or category =:x or name like :y";
+	Query q = (Query) this.entityManager.createQuery(query);
+	q.setParameter("x", keyword);
+	q.setParameter("y", "%"+keyword+"%");
+	List<Product> product = q.getResultList();
+	for(Product p: product) {
+	int productId = p.getProductId();
+	String productImage1 = p.getProductImage1();
+	String productName = p.getName();
+	String productBrand = p.getBrand();
+	Double productPrice = p.getPrice();
+	String productDescription = p.getDescription();
+	String productImage2 = p.getProductImage2();
+	String productImage3 = p.getProductImage3();
+	String productImage4 = p.getProductImage4();
+	products.add(new ProductDto(productImage1, productImage2, productImage3,productImage4,productDescription,
+	productId, productName, productBrand, productPrice));
 	}
+	return products;
+	}
+	
 	
 	public List<ProductDto> sortProductByFactors(String by , boolean order ){
 		//true value is for ascending and false value is for descending
@@ -88,7 +91,7 @@ public class ProductDaoImpl implements ProductDao {
 	}
 	
 	
-	/* public ProductDto getProductById(int productId) {         // should be based only on ID. (ngFor)
+	 public ProductDto getProductById(int productId) {         // should be based only on ID. (ngFor)
 		ProductDto product = null; //this diplays all the products in the page 
 		String q = "select name,price,brand,description,productImage1, productImage2, productImage3, productImage4,productId from Product where productId=:x";
 		Query query = (Query)this.entityManager.createQuery(q);
@@ -108,9 +111,9 @@ public class ProductDaoImpl implements ProductDao {
 			product = new ProductDto(pImage1, pImage2, pImage3, pImage4, pDescription, productId, pName, pBrand, pPrice);
 		}
 		return product;
-	} */
+	} 
 	
-	public ProductDto getProductById() {         // should be based only on ID. (ngFor)
+	/*public ProductDto getProductById() {         // should be based only on ID. (ngFor)
 		ProductDto product = null; //this diplays all the products in the page 
 		String q = "select name,price,brand,description,productImage1, productImage2, productImage3, productImage4,productId from Product ";
 		Query query = (Query)this.entityManager.createQuery(q);
@@ -130,7 +133,7 @@ public class ProductDaoImpl implements ProductDao {
 			product = new ProductDto(pImage1, pImage2, pImage3, pImage4, pDescription, pId, pName, pBrand, pPrice);
 		}
 		return product;
-	}
+	}*/
 
 	
  

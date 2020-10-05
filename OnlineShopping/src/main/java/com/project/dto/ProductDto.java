@@ -1,5 +1,7 @@
 package com.project.dto;
 
+
+
 public class ProductDto {
 	
 	private String productImage1;
@@ -11,8 +13,6 @@ public class ProductDto {
 	private String name;
 	private String brand;
 	private Double price;
-	
-	
 	public ProductDto(String productImage1, String productImage2, String productImage3, String productImage4,
 			String description, int productId, String name, String brand, Double price) {
 		super();
@@ -25,7 +25,6 @@ public class ProductDto {
 		this.name = name;
 		this.brand = brand;
 		this.price = price;
-		
 	}
 	public String getProductImage1() {
 		return productImage1;
@@ -81,6 +80,15 @@ public class ProductDto {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
