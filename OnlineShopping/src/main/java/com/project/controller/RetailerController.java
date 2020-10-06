@@ -22,7 +22,6 @@ import com.project.entity.Retailer;
 import com.project.dto.AddProductStatus;
 import com.project.dto.Status;
 import com.project.entity.Product;
-import com.project.entity.Retailer;
 import com.project.exception.RetailerServiceException;
 import com.project.service.ProductService;
 import com.project.service.RetailerService;

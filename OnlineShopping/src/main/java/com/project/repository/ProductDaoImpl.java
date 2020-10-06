@@ -113,31 +113,59 @@ public class ProductDaoImpl implements ProductDao {
 		return product;
 	} 
 	
-	/*public ProductDto getProductById() {         // should be based only on ID. (ngFor)
-		ProductDto product = null; //this diplays all the products in the page 
-		String q = "select name,price,brand,description,productImage1, productImage2, productImage3, productImage4,productId from Product ";
-		Query query = (Query)this.entityManager.createQuery(q);
-		List<Object[]> prod = query.getResultList();
-		//System.out.println();
-		for(Object[] p :prod) {
-			System.out.println("Products :"+p[4]+p[8]+Arrays.toString(p));
-			String pName = 	(String) p[0];
-			Double pPrice =  Double.parseDouble(String.valueOf(p[1]));
-			String pBrand = (String) p[2];
-			String pDescription = (String) p[3];
-			String pImage1 = (String) p[4];
-			String pImage2 = (String) p[5];
-			String pImage3 = (String) p[6];
-			String pImage4 = (String) p[7];
-			int pId = Integer.parseInt(String.valueOf(p[8]));
-			product = new ProductDto(pImage1, pImage2, pImage3, pImage4, pDescription, pId, pName, pBrand, pPrice);
-		}
-		return product;
-	}*/
+	
 	@Override 
 	public List<Product> fetchAllProducts() {
 		String jpql = "select p from Product p";
 		return entityManager.createQuery(jpql).getResultList();
+	}
+	
+	@Override
+	public List<ProductDto> filterProduct(String brand, double start, double end){
+		List<ProductDto> products = new ArrayList<ProductDto>();
+		if(start==0 && end ==0) {
+			System.out.println("Filtering according to Brand");
+			String q = "from Product where brand =: x ";
+			Query query = (Query)this.entityManager.createQuery(q);
+			query.setParameter("x", brand);
+			List<Product> pro = query.getResultList();
+			for(Product p :pro) {
+				int productId = p.getProductId();
+				String productName = p.getName();
+				String productBrand = p.getBrand();
+				Double productPrice = p.getPrice();
+				String productDescription = p.getDescription();
+				String productImage1 = p.getProductImage1();
+				String productImage2 = p.getProductImage2();
+				String productImage3 = p.getProductImage3();
+				String productImage4 = p.getProductImage4();
+				products.add(new ProductDto(productImage1, productImage2, productImage3,productImage4,productDescription,
+						productId, productName, productBrand,productPrice));
+			}
+		}
+		else {
+			System.out.println("Filtering according to Range");
+			String q = "from Product where brand =: z and price between :x and :y";
+			Query query = (Query)this.entityManager.createQuery(q);
+			query.setParameter("z", brand);
+			query.setParameter("x", start);
+			query.setParameter("y", end);
+			List<Product> pro = query.getResultList();
+			for(Product p :pro) {
+				int productId = p.getProductId();
+				String productName = p.getName();
+				String productBrand = p.getBrand();
+				Double productPrice = p.getPrice();
+				String productDescription = p.getDescription();
+				String productImage1 = p.getProductImage1();
+				String productImage2 = p.getProductImage2();
+				String productImage3 = p.getProductImage3();
+				String productImage4 = p.getProductImage4();
+				products.add(new ProductDto(productImage1, productImage2, productImage3,productImage4,productDescription,
+						productId, productName, productBrand,productPrice));
+			}
+		}
+		return products;
 	}
 
 	

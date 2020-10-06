@@ -56,6 +56,12 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.fetchAllProducts();
 
 	}
+	
+	@Override
+	public List<ProductDto> filterProduct(String brand, double start, double end) {
+		// TODO Auto-generated method stub
+		return this.productDao.filterProduct(brand, start, end);
+	}
 
 //	public savePic(int id) {
 //		//fetching customer data from db
