@@ -22,7 +22,6 @@ import com.project.entity.Retailer;
 import com.project.dto.AddProductStatus;
 import com.project.dto.Status;
 import com.project.entity.Product;
-import com.project.entity.Retailer;
 import com.project.exception.RetailerServiceException;
 import com.project.service.ProductService;
 import com.project.service.RetailerService;
@@ -42,7 +41,6 @@ public class RetailerController {
 		try {
 			int id = retailerService.register(retailer);
 			Status status = new Status();
-			status.setId(id);
 			status.setStatus(true);
 			status.setStatusMessage("Registration Successfull");
 			return status;
