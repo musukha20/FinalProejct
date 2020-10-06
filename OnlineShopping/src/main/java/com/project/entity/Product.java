@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
@@ -35,6 +37,7 @@ public class Product implements Serializable{
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="retailer_id")
+	@JsonIgnore
 	private Retailer retailer;
 	
 	private String brand;
@@ -45,12 +48,15 @@ public class Product implements Serializable{
 	private String productImage4;
 	
 	@OneToMany(mappedBy="product",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<OrderDetail> orderDetail;
 	
 	@OneToMany(mappedBy="product",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Cart> cart;
 
 	@OneToMany(mappedBy="product",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Wishlist> wishlist;
 
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.project.dto.AddToCartStatus;
+import com.project.dto.CartDto;
 import com.project.dto.PlacedOrder;
 import com.project.dto.Status;
 import com.project.entity.Cart;
@@ -109,7 +110,13 @@ public class CustomerController {
 
 	} 
 	
+	@GetMapping(path = "/getMyCart") //passed
+	public List<CartDto> getMyCart(@RequestParam("userId") int userId)
+	{
+		return this.customerService.getCartValues(userId);
+	}
 	
+
 
 		
 	

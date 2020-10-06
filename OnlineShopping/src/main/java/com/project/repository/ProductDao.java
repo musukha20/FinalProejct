@@ -10,4 +10,5 @@ public interface ProductDao {
 	public List<ProductDto> sortProductByFactors(String by , boolean order ); 
 	public ProductDto getProductById(int productId);
 	//public ProductDto getProductById();
+	List<Product> fetchAllProducts();
 }

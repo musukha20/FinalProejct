@@ -134,6 +134,11 @@ public class ProductDaoImpl implements ProductDao {
 		}
 		return product;
 	}*/
+	@Override 
+	public List<Product> fetchAllProducts() {
+		String jpql = "select p from Product p";
+		return entityManager.createQuery(jpql).getResultList();
+	}
 
 	
  
