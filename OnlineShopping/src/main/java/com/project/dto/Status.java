@@ -5,7 +5,6 @@ public class Status {
 	private boolean status;
 	private String statusMessage;
 	
-	private int id;
 	
 	public boolean isStatus() {
 		return status;
@@ -18,12 +17,6 @@ public class Status {
 	}
 	public void setStatusMessage(String statusMessage) {
 		this.statusMessage = statusMessage;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 		
 	
