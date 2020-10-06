@@ -13,5 +13,5 @@ public interface ProductService {
 	//ProductDto toListAllProducts(); 
 	ProductDto get(int id);
 	List<Product> getAllProducts();
-
+	public List<ProductDto> filterProduct(String brand, double start, double end);
 }

@@ -119,6 +119,54 @@ public class ProductDaoImpl implements ProductDao {
 		String jpql = "select p from Product p";
 		return entityManager.createQuery(jpql).getResultList();
 	}
+	
+	@Override
+	public List<ProductDto> filterProduct(String brand, double start, double end){
+		List<ProductDto> products = new ArrayList<ProductDto>();
+		if(start==0 && end ==0) {
+			System.out.println("Filtering according to Brand");
+			String q = "from Product where brand =: x ";
+			Query query = (Query)this.entityManager.createQuery(q);
+			query.setParameter("x", brand);
+			List<Product> pro = query.getResultList();
+			for(Product p :pro) {
+				int productId = p.getProductId();
+				String productName = p.getName();
+				String productBrand = p.getBrand();
+				Double productPrice = p.getPrice();
+				String productDescription = p.getDescription();
+				String productImage1 = p.getProductImage1();
+				String productImage2 = p.getProductImage2();
+				String productImage3 = p.getProductImage3();
+				String productImage4 = p.getProductImage4();
+				products.add(new ProductDto(productImage1, productImage2, productImage3,productImage4,productDescription,
+						productId, productName, productBrand,productPrice));
+			}
+		}
+		else {
+			System.out.println("Filtering according to Range");
+			String q = "from Product where brand =: z and price between :x and :y";
+			Query query = (Query)this.entityManager.createQuery(q);
+			query.setParameter("z", brand);
+			query.setParameter("x", start);
+			query.setParameter("y", end);
+			List<Product> pro = query.getResultList();
+			for(Product p :pro) {
+				int productId = p.getProductId();
+				String productName = p.getName();
+				String productBrand = p.getBrand();
+				Double productPrice = p.getPrice();
+				String productDescription = p.getDescription();
+				String productImage1 = p.getProductImage1();
+				String productImage2 = p.getProductImage2();
+				String productImage3 = p.getProductImage3();
+				String productImage4 = p.getProductImage4();
+				products.add(new ProductDto(productImage1, productImage2, productImage3,productImage4,productDescription,
+						productId, productName, productBrand,productPrice));
+			}
+		}
+		return products;
+	}
 
 	
  

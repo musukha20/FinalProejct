@@ -43,4 +43,10 @@ public class ProductController {
 		return this.productService.toListAllProducts();
 	} */
 	
+	@GetMapping(path = "/filterProduct")
+	public List<ProductDto> filterProductMethod(@RequestParam("brand") String brand,@RequestParam("start")  String start, @RequestParam("end")  String end)
+	{
+		return this.productService.filterProduct(brand, Double.parseDouble(start), Double.parseDouble(end));
+	}
+	
 }
