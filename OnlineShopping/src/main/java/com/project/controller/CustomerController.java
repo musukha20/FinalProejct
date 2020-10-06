@@ -27,8 +27,8 @@ import com.project.entity.User;
 import com.project.exception.CustomerServiceException;
 import com.project.service.CustomerService;
 
-@RestController
 @CrossOrigin
+@RestController
 public class CustomerController {
 
 	@Autowired
@@ -79,7 +79,7 @@ public class CustomerController {
 	
 	
 
-	/*@GetMapping(path = "/addToMyCart")
+	@GetMapping(path = "/addToMyCart")
 	public Status addToMyCart(@RequestParam("userId") int userId, @RequestParam("productId") int productId) {
 		try {
 			boolean ok = customerService.addToCart(userId, productId);
@@ -141,7 +141,7 @@ public class CustomerController {
 
 	} 
 	
-	@GetMapping(path = "/getMyCart") //passed
+	@GetMapping(path = "/cart") //passed
 	public List<CartDto> getMyCart(@RequestParam("userId") int userId)
 	{
 		return this.customerService.getCartValues(userId);
@@ -155,5 +155,5 @@ public class CustomerController {
 	public List<PlacedOrder> showOrderDetails(@RequestParam ("uId") int uId){
 		return customerService.getMyPlacedOrders(uId);
 		
-	} */
+	} 
 }
