@@ -64,12 +64,7 @@ public class UserDaoImpl implements UserDao{
 		}
 		return carts;
 	}
-<<<<<<< HEAD
 
-	
-	
-=======
->>>>>>> branch 'master' of https://github.com/musukha20/FinalProject.git
 
 	@Override
 	public int findByEmailPassword(String email, String password) {

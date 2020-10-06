@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.controller.CustomerController.Status.StatusType;
 import com.project.dto.AddToCartStatus;
-<<<<<<< HEAD
+
 import com.project.dto.CartDto;
-=======
+
 import com.project.dto.Login;
 import com.project.dto.LoginStatus;
->>>>>>> branch 'master' of https://github.com/musukha20/FinalProject.git
+
 import com.project.dto.PlacedOrder;
 import com.project.dto.Status;
 import com.project.entity.Cart;
