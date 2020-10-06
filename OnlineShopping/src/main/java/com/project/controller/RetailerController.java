@@ -42,7 +42,6 @@ public class RetailerController {
 		try {
 			int id = retailerService.register(retailer);
 			Status status = new Status();
-			status.setId(id);
 			status.setStatus(true);
 			status.setStatusMessage("Registration Successfull");
 			return status;
