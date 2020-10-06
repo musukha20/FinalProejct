@@ -2,12 +2,14 @@ package com.project.service;
 
 import java.util.List;
 
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.project.dto.CartDto;
 import com.project.dto.PlacedOrder;
 import com.project.entity.Cart;
 import com.project.entity.User;
@@ -58,7 +60,12 @@ public class CustomerServiceImpl implements CustomerService{
 		// TODO Auto-generated method stub
 		return this.cartDao.deleteCart(cartId);
 	}
-	
+	@Override
+	public List<CartDto> getCartValues(int userId) {
+		// TODO Auto-generated method stub
+		return this.userDao.getCartOfUser(userId);
+	}
+
 
 
 	@Override
