@@ -13,14 +13,16 @@ public class LoginStatus extends Status{
 		this.customerId = customerId;
 	}
 
-	private String name;
+	private String customerName;
 
-	public String getName() {
-		return name;
+
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
+
 	
 }

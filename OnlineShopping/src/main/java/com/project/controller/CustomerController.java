@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.controller.CustomerController.Status.StatusType;
 import com.project.dto.AddToCartStatus;
 import com.project.dto.Login;
 import com.project.dto.LoginStatus;
@@ -32,12 +31,11 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 	
-	/*@PostMapping(path="/userRegistration")
+	@PostMapping(path="/userRegistration")
 	public Status register(@RequestBody User user) {
 		try {
 			int id=customerService.register(user);
 			Status status=new Status();
-			status.setId(id);
 			status.setStatus(true);
 			status.setStatusMessage("Registration Successfull");
 			return status;
@@ -49,7 +47,7 @@ public class CustomerController {
 			status.setStatusMessage(e.getMessage());
 			return status;
 		}
-	} */
+	} 
 	
 	@PostMapping("/login")
     //@PostMapping(path="/login", consumes ="application/json")
@@ -58,75 +56,29 @@ public class CustomerController {
         	//System.out.println(loginDto.getEmail());
             User user = customerService.login(login.getEmail(), login.getPassword());
             LoginStatus loginStatus = new LoginStatus();
-            loginStatus.setStatus(StatusType.SUCCESS);
-            loginStatus.setMessage("Login Successful");
-            loginStatus.setStudentId(user.getId());
-            loginStatus.setName(user.getName());
+            loginStatus.setStatus(true);
+            loginStatus.setStatusMessage("Login Sucessful");
+            loginStatus.setCustomerId(user.getId());
+            loginStatus.setCustomerName(user.getName());
             return loginStatus;
             
         }
         catch(CustomerServiceException e) {
             LoginStatus loginStatus = new LoginStatus();
-            loginStatus.setStatus(StatusType.FAILURE);
-            loginStatus.setMessage(e.getMessage());
+            loginStatus.setStatusMessage(e.getMessage());
+            
             return loginStatus;
         }
         
     }
   
-	 public static class LoginStatus extends Status{
-	        private int studentId;
-	        private String name;
-	        public int getStudentId() {
-	            return studentId;
-	        }
-	        public void setStudentId(int studentId) {
-	            this.studentId = studentId;
-	        }
-	        public String getName() {
-	            return name;
-	        }
-	        public void setName(String name) {
-	            this.name = name;
-	        }
-	        
-	        
-	    }
+	
 	    
-	    
-	    public static class Status{
-	        private StatusType status;
-	        private String message;
-	        
-	        public static enum StatusType{
-	            SUCCESS,FAILURE;
-	        }
 
-
-	        public StatusType getStatus() {
-	            return status;
-	        }
-
-
-	        public void setStatus(StatusType status) {
-	            this.status = status;
-	        }
-
-
-	        public String getMessage() {
-	            return message;
-	        }
-
-
-	        public void setMessage(String message) {
-	            this.message = message;
-	        }
-	        
-	    }
 	
 	
 
-	/*@GetMapping(path = "/addToMyCart")
+	@GetMapping(path = "/addToMyCart")
 	public Status addToMyCart(@RequestParam("userId") int userId, @RequestParam("productId") int productId) {
 		try {
 			boolean ok = customerService.addToCart(userId, productId);
@@ -188,13 +140,10 @@ public class CustomerController {
 
 	} 
 	
-	
-
-		
-	
+	 	
 	@GetMapping(path="/getMyPlacedOrders")
 	public List<PlacedOrder> showOrderDetails(@RequestParam ("uId") int uId){
 		return customerService.getMyPlacedOrders(uId);
 		
-	} */
+	} 
 }
