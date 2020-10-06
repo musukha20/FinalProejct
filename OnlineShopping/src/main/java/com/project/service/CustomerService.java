@@ -18,6 +18,10 @@ public interface CustomerService {
 	public List<PlacedOrder> getMyPlacedOrders(int uId);
 	public boolean updateCart(int cId, int addOrMinus);
 	public boolean deleteCart(int cartId) throws CartException;
+<<<<<<< HEAD
 	public List<CartDto> getCartValues(int userId);
+=======
+	public User login(String email, String password);
+>>>>>>> branch 'master' of https://github.com/musukha20/FinalProject.git
 	
 }

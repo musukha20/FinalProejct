@@ -64,11 +64,26 @@ public class UserDaoImpl implements UserDao{
 		}
 		return carts;
 	}
+<<<<<<< HEAD
 
 	
 	
+=======
+>>>>>>> branch 'master' of https://github.com/musukha20/FinalProject.git
 
+	@Override
+	public int findByEmailPassword(String email, String password) {
+		return (Integer) entityManager
+				.createQuery("select c.id from User c where c.email = :em and c.password = :pw")
+				.setParameter("em", email)
+				.setParameter("pw", password)
+				.getSingleResult();
+	}
 
-	
-
+	@Override
+	public User findById(int id) {
+		// TODO Auto-generated method stub
+					//System.out.println(id);
+					return entityManager.find(User.class,id);
+				}	
 }

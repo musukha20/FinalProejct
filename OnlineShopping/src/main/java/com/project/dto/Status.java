@@ -4,6 +4,7 @@ public class Status {
 	
 	private boolean status;
 	private String statusMessage;
+	
 	private int id;
 	
 	public boolean isStatus() {
