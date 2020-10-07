@@ -27,8 +27,8 @@ import com.project.entity.User;
 import com.project.exception.CustomerServiceException;
 import com.project.service.CustomerService;
 
-@RestController
 @CrossOrigin
+@RestController
 public class CustomerController {
 
 	@Autowired
@@ -137,7 +137,7 @@ public class CustomerController {
 
 	} 
 	
-	@GetMapping(path = "/getMyCart") //passed
+	@GetMapping(path = "/cart") //passed
 	public List<CartDto> getMyCart(@RequestParam("userId") int userId)
 	{
 		return this.customerService.getCartValues(userId);

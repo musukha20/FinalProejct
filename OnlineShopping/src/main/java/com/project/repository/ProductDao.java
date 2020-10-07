@@ -11,4 +11,5 @@ public interface ProductDao {
 	public ProductDto getProductById(int productId);
 	//public ProductDto getProductById();
 	List<Product> fetchAllProducts();
+	public List<ProductDto> filterProduct(String brand, double start, double end); 
 }

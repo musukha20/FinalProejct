@@ -42,7 +42,7 @@ public class UserDaoImpl implements UserDao{
 		List<CartDto> carts = new ArrayList<CartDto>();
 		User user = (User)this.entityManager.find(User.class, userId);
 		System.out.println("User is :"+user);
-		String q = "from CartTable where userTable=:x";
+		String q = "from Cart where user=:x";
 		Query query = (Query)this.entityManager.createQuery(q);
 		query.setParameter("x", user);
 		List<Cart> cartTables = query.getResultList();
