@@ -27,7 +27,7 @@ import com.project.service.ProductService;
 import com.project.service.RetailerService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class RetailerController {
 
 	@Autowired

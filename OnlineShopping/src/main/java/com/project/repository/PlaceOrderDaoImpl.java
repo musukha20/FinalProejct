@@ -30,7 +30,7 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 	@Override
 	public boolean placeOrder(List<CartDto> carts, String payType) {
 		// TODO Auto-generated method stub
-		try {
+		
 		List<OrderDetail> orderDetailsList=new ArrayList<OrderDetail>();
 		Cart cart=entityManager.find(Cart.class, carts.get(0).getcId());
 		
@@ -79,10 +79,10 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 		entityManager.merge(newOrder);   //update order table
 		
 		return true;
-	}catch(CustomerServiceException e){
-		return false;
-		}
+	
 	}
+	
+	
 	@Override
 	public List<PlacedOrder> showPlacedOrders(int uId) {
 		// TODO Auto-generated method stub
@@ -122,6 +122,4 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 		return orders;
 	}
 	
-	
-
 }
