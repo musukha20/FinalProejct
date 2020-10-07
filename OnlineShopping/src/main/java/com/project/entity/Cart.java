@@ -54,9 +54,15 @@ public class Cart implements Serializable{
 		this.user_id = user_id;
 	} */
 
+	
+
+	
+
 	public int getId() {
 		return id;
 	}
+
+	
 
 	public void setId(int id) {
 		this.id = id;
@@ -85,5 +91,7 @@ public class Cart implements Serializable{
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	
 
 }

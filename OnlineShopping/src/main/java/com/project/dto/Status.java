@@ -19,6 +19,4 @@ public class Status {
 		this.statusMessage = statusMessage;
 	}
 	
-		
-	
 }

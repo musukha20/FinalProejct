@@ -5,6 +5,8 @@ import com.project.dto.Status;
 public class LoginStatus extends Status{
 	
 	private int customerId;
+	private String customerName;
+	
 	public int getCustomerId() {
 		return customerId;
 	}
@@ -12,9 +14,6 @@ public class LoginStatus extends Status{
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
-
-	private String customerName;
-
 
 	public String getCustomerName() {
 		return customerName;

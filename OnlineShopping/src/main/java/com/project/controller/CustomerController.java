@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.project.dto.AddToCartStatus;
+
+import com.project.dto.CartDto;
+
 import com.project.dto.Login;
 import com.project.dto.LoginStatus;
+
 import com.project.dto.PlacedOrder;
 import com.project.dto.Status;
 import com.project.entity.Cart;
@@ -66,17 +69,11 @@ public class CustomerController {
         catch(CustomerServiceException e) {
             LoginStatus loginStatus = new LoginStatus();
             loginStatus.setStatusMessage(e.getMessage());
-            
             return loginStatus;
         }
         
     }
   
-	
-	    
-
-	
-	
 
 	@GetMapping(path = "/addToMyCart")
 	public Status addToMyCart(@RequestParam("userId") int userId, @RequestParam("productId") int productId) {
@@ -140,7 +137,12 @@ public class CustomerController {
 
 	} 
 	
-	 	
+	@GetMapping(path = "/getMyCart") //passed
+	public List<CartDto> getMyCart(@RequestParam("userId") int userId)
+	{
+		return this.customerService.getCartValues(userId);
+	}
+	
 	@GetMapping(path="/getMyPlacedOrders")
 	public List<PlacedOrder> showOrderDetails(@RequestParam ("uId") int uId){
 		return customerService.getMyPlacedOrders(uId);

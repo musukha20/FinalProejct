@@ -2,6 +2,7 @@ package com.project.service;
 
 import java.util.List;
 import com.project.dto.ProductDto;
+import com.project.entity.Product;
 
 
 public interface ProductService {
@@ -11,5 +12,6 @@ public interface ProductService {
 	ProductDto toListAllProducts(int productId); 
 	//ProductDto toListAllProducts(); 
 	ProductDto get(int id);
+	List<Product> getAllProducts();
 
 }
