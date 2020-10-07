@@ -69,7 +69,7 @@ public class CustomerServiceImpl implements CustomerService{
 
 
 	@Override
-	public boolean placeOrder(List<Cart> carts, String payType) {
+	public boolean placeOrder(List<CartDto> carts, String payType) {
 		// TODO Auto-generated method stub
 		return placeOrderDao.placeOrder(carts,payType);
 	}
