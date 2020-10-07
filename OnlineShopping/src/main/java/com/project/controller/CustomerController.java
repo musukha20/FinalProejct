@@ -135,7 +135,7 @@ public class CustomerController {
 		}
 	} 
 	
-	@GetMapping(path = "/cart") //passed
+	@GetMapping(path = "/getMyCart") //passed
 	public List<CartDto> getMyCart(@RequestParam("userId") int userId)
 	{
 		return this.customerService.getCartValues(userId);
