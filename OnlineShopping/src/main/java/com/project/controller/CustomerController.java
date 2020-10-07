@@ -27,7 +27,7 @@ import com.project.entity.User;
 import com.project.exception.CustomerServiceException;
 import com.project.service.CustomerService;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class CustomerController {
 
@@ -107,7 +107,7 @@ public class CustomerController {
 		return "Cannot Update Cart";
 	}
 	
-	@DeleteMapping(path = "/deleteMyCart") //passed
+	@GetMapping(path = "/deleteMyCart") //passed
 	public String deleteMyCart(@RequestParam("cartId")int cId)
 	{
 		try
