@@ -87,7 +87,11 @@ public class RetailerController {
 			f.mkdir();
 		String targetFile1 = tempDownloadPath + product.getProductImage1();
 		// the original image location
+<<<<<<< HEAD
 		String sourceFile = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage1();
+=======
+		String sourceFile = "C:/Users/w/Desktop/picture/" + product.getProductImage1();
+>>>>>>> branch 'master' of https://github.com/musukha20/FinalProject.git
 		try {
 			FileCopyUtils.copy(new File(sourceFile), new File(targetFile1));
 		} catch (IOException e) {
@@ -117,7 +121,8 @@ public class RetailerController {
 				f.mkdir();
 			String targetFile1 = tempDownloadPath + product.getProductImage1();
 			// the original image location
-			String sourceFile = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage1();
+			//String sourceFile = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage1();
+			String sourceFile = "C:Users/w/Desktop/picture/" + product.getProductImage1();
 			try {
 				FileCopyUtils.copy(new File(sourceFile), new File(targetFile1));
 			} catch (IOException e) {
