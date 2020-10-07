@@ -124,7 +124,7 @@ public class CustomerController {
 
 
 	@PostMapping(path = "/placeOrder")
-	public String placeOrder(@RequestBody List<Cart> carts,@RequestParam("payType") String payType) {
+	public String placeOrder(@RequestBody List<CartDto> carts,@RequestParam("payType") String payType) {
 		try {
 		boolean ok = customerService.placeOrder(carts, payType);
 		if (ok == true)
