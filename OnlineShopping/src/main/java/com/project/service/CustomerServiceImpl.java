@@ -11,11 +11,13 @@ import org.springframework.stereotype.Service;
 
 import com.project.dto.CartDto;
 import com.project.dto.PlacedOrder;
+import com.project.dto.WishListDto;
 import com.project.entity.Cart;
 import com.project.entity.Otp;
 import com.project.entity.User;
 import com.project.exception.CartException;
 import com.project.exception.CustomerServiceException;
+import com.project.exception.WishlistException;
 import com.project.repository.CartDao;
 import com.project.repository.OTPDao;
 import com.project.repository.PlaceOrderDao;
@@ -103,4 +105,32 @@ public class CustomerServiceImpl implements CustomerService{
             
         }
     }
+
+
+	@Override
+	public User getUserById(int uId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<WishListDto> getWishlistValues(int uId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public boolean addToWishlist(int uId, int pId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean deleteWishlist(int wId) throws WishlistException {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
