@@ -12,10 +12,12 @@ import org.springframework.stereotype.Service;
 import com.project.dto.CartDto;
 import com.project.dto.PlacedOrder;
 import com.project.entity.Cart;
+import com.project.entity.Otp;
 import com.project.entity.User;
 import com.project.exception.CartException;
 import com.project.exception.CustomerServiceException;
 import com.project.repository.CartDao;
+import com.project.repository.OTPDao;
 import com.project.repository.PlaceOrderDao;
 import com.project.repository.UserDao;
 
@@ -29,6 +31,13 @@ public class CustomerServiceImpl implements CustomerService{
 	private PlaceOrderDao placeOrderDao;
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private OTPDao otpDAO;
+	
+	public int generateOTP()
+	{
+		return this.otpDAO.addOtp();
+	}
 	
 	
 	@Override
