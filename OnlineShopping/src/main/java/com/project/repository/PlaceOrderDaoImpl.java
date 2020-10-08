@@ -9,6 +9,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+
+import com.project.dto.CartDto;
 import com.project.dto.PlacedOrder;
 import com.project.entity.Cart;
 import com.project.entity.Order;
@@ -26,11 +28,11 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 	private EntityManager entityManager;
 
 	@Override
-	public boolean placeOrder(List<Cart> carts, String payType) {
+	public boolean placeOrder(List<CartDto> carts, String payType) {
 		// TODO Auto-generated method stub
-		try {
+		
 		List<OrderDetail> orderDetailsList=new ArrayList<OrderDetail>();
-		Cart cart=entityManager.find(Cart.class, carts.get(0).getId());
+		Cart cart=entityManager.find(Cart.class, carts.get(0).getcId());
 		
 		//first get userTable from a specific Cart
 		User user=cart.getUser();
@@ -40,9 +42,9 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 		entityManager.persist(newOrder);   //save the new order to get the id
 		
 		
-		for(Cart c : carts) {
+		for(CartDto c : carts) {
 			
-			cart=entityManager.find(Cart.class, c.getId());
+			cart=entityManager.find(Cart.class, c.getcId());
 			
 			OrderDetail orderDetails =new OrderDetail();
 			orderDetails.setPurchaseDate(LocalDate.now());
@@ -77,10 +79,10 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 		entityManager.merge(newOrder);   //update order table
 		
 		return true;
-	}catch(CustomerServiceException e){
-		return false;
-		}
+	
 	}
+	
+	
 	@Override
 	public List<PlacedOrder> showPlacedOrders(int uId) {
 		// TODO Auto-generated method stub
@@ -120,5 +122,4 @@ public class PlaceOrderDaoImpl implements PlaceOrderDao {
 		return orders;
 	}
 	
-
 }

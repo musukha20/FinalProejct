@@ -32,7 +32,7 @@ import com.project.service.ProductService;
 import com.project.service.RetailerService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class RetailerController {
 
 	@Autowired
@@ -92,7 +92,13 @@ public class RetailerController {
 			f.mkdir();
 		String targetFile1 = tempDownloadPath + product.getProductImage1();
 		// the original image location
-		String sourceFile = "C:/Users/RSP/Desktop/products/" + product.getProductImage1();
+
+		//String sourceFile = "C:/Users/RSP/Desktop/products/" + product.getProductImage1();
+
+
+		String sourceFile = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage1();
+
+
 		try {
 			FileCopyUtils.copy(new File(sourceFile), new File(targetFile1));
 		} catch (IOException e) {
@@ -126,10 +132,15 @@ public class RetailerController {
 			String targetFile3 = tempDownloadPath + product.getProductImage3();
 			String targetFile4 = tempDownloadPath + product.getProductImage4();
 			// the original image location
+
 			String sourceFile1 = "C:/Users/RSP/Desktop/products/" + product.getProductImage1();
 			String sourceFile2 = "C:/Users/RSP/Desktop/products/" + product.getProductImage2();
 			String sourceFile3 = "C:/Users/RSP/Desktop/products/" + product.getProductImage3();
 			String sourceFile4 = "C:/Users/RSP/Desktop/products/" + product.getProductImage4();
+
+			String sourceFile = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage1();
+			//String sourceFile = "C:Users/w/Desktop/picture/" + product.getProductImage1();
+
 			try {
 				FileCopyUtils.copy(new File(sourceFile1), new File(targetFile1));
 				FileCopyUtils.copy(new File(sourceFile2), new File(targetFile2));

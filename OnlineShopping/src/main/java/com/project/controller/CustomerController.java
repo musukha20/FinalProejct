@@ -27,7 +27,7 @@ import com.project.entity.User;
 import com.project.exception.CustomerServiceException;
 import com.project.service.CustomerService;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class CustomerController {
 
@@ -107,7 +107,7 @@ public class CustomerController {
 		return "Cannot Update Cart";
 	}
 	
-	@DeleteMapping(path = "/deleteMyCart") //passed
+	@GetMapping(path = "/deleteMyCart") //passed
 	public String deleteMyCart(@RequestParam("cartId")int cId)
 	{
 		try
@@ -124,17 +124,15 @@ public class CustomerController {
 
 
 	@PostMapping(path = "/placeOrder")
-	public String placeOrder(@RequestBody List<Cart> carts,@RequestParam("payType") String payType) {
-	
-		try {
+	public String placeOrder(@RequestBody List<CartDto> carts,@RequestParam("payType") String payType) {
+
+		
 		boolean ok = customerService.placeOrder(carts, payType);
 		if (ok == true)
 			return "Order Place Successfully";
 		return "Order place failed";
-		}catch(CustomerServiceException e){
-		return "Everything Failed";
-		}
-
+		
+	
 	} 
 	
 	@GetMapping(path = "/getMyCart") //passed
