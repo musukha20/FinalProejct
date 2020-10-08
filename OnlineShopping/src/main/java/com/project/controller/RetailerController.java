@@ -106,8 +106,6 @@ public class RetailerController {
 			// maybe for this customer no profile pic
 		}
 		return product;
-
-
 	}
 
 	@GetMapping("/all-productdisplay")
