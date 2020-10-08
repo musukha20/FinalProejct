@@ -19,5 +19,8 @@ public interface UserDao {
 	
 	public List<WishListDto> getWishlistOfUser(int uId);
 
+	public User getUserByEmail(String email);
+	
+	public User updateUser(long uId, User user);
 
 }

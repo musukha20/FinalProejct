@@ -28,6 +28,7 @@ public interface CustomerService {
 	public List<WishListDto> getWishlistValues(int uId);
 	public boolean addToWishlist(int uId, int pId);
 	public boolean deleteWishlist(int wId) throws WishlistException;
+	public int generateOTP();
 
 	
 }

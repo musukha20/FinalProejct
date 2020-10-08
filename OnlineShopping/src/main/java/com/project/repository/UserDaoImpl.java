@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NonUniqueResultException;
 
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import com.project.dto.WishListDto;
 import com.project.entity.Cart;
 import com.project.entity.User;
 import com.project.entity.Wishlist;
+import com.project.exception.CustomerServiceException;
 
 @Repository
 public class UserDaoImpl implements UserDao{
@@ -105,5 +107,34 @@ public class UserDaoImpl implements UserDao{
 			wishlists.add(new WishListDto(wId, pId, pImage1, pName, pBrand, pPrice));
 		}
 		return wishlists;
-	}	
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		String query = "from UserTable where uEmail=:x";
+		User user = null;
+		Query q = null;
+		try
+		{
+			q = (Query) this.entityManager.createQuery(query);
+			q.setParameter("x", email);
+			user = (User)q.getSingleResult();
+		}
+		catch(NonUniqueResultException e)
+		{
+			return null;
+		}
+		catch(Exception e)
+		{
+			throw new CustomerServiceException("Customer Not Exists");
+		}
+		
+		return user;
+	}
+
+	@Override
+	public User updateUser(long uId, User user) {
+		this.entityManager.merge(user);
+		return null;
+	}
 }

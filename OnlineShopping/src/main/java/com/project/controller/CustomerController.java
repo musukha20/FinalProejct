@@ -175,4 +175,10 @@ public class CustomerController {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	@GetMapping(path = "/generateOTP") //passed
+	public int generateOTP()
+	{
+		return this.customerService.generateOTP();
+	}
 }
