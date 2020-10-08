@@ -8,7 +8,7 @@ public interface RetailerService {
 
 	int register(Retailer retailer);
 	
-	public int additionOfProduct(Product product, Retailer retailer);
+	public int additionOfProduct(Product product, int retailerId);
 
 	Retailer get(int id);
 

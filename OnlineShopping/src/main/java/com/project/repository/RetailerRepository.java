@@ -14,7 +14,7 @@ public interface RetailerRepository {
 
 	boolean isRetailerPresent(String email);
 	
-	int addProduct(Product product, Retailer retailer);
+	int addProduct(Product product);
 
 	
 
