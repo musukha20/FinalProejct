@@ -10,10 +10,11 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Repository;
-
 import com.project.dto.CartDto;
+import com.project.dto.WishListDto;
 import com.project.entity.Cart;
 import com.project.entity.User;
+import com.project.entity.Wishlist;
 
 @Repository
 public class UserDaoImpl implements UserDao{
@@ -80,5 +81,29 @@ public class UserDaoImpl implements UserDao{
 		// TODO Auto-generated method stub
 					//System.out.println(id);
 					return entityManager.find(User.class,id);
-				}	
+				}
+
+	@Override
+	public List<WishListDto> getWishlistOfUser(int uId) {
+		
+		List<WishListDto> wishlists = new ArrayList<WishListDto>();
+		User user = (User)this.entityManager.find(User.class, uId);
+		System.out.println("User is :"+user);
+		String q = "from Wishlist where user=:x";
+		Query query = (Query)this.entityManager.createQuery(q);
+		query.setParameter("x", user);
+		List<Wishlist> wishlist = query.getResultList();
+		//System.out.println("Cart values are :"+query.getResultList().toString());
+		for(Wishlist w : wishlist)
+		{
+			int wId = w.getId();
+			int pId = w.getProduct().getProductId();
+			String pName = w.getProduct().getName();
+			String pBrand = w.getProduct().getBrand();
+			int pPrice = (int) w.getProduct().getPrice();
+			String pImage1 = w.getProduct().getProductImage1();
+			wishlists.add(new WishListDto(wId, pId, pImage1, pName, pBrand, pPrice));
+		}
+		return wishlists;
+	}	
 }

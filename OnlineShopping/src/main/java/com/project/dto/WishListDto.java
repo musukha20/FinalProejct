@@ -7,6 +7,17 @@ public class WishListDto {
 	private String pName;
 	private String pBrand;
 	private int pPrice;
+	
+	
+	public WishListDto(int wId, int pId, String pImage1, String pName, String pBrand, int pPrice) {
+		super();
+		this.wId = wId;
+		this.pId = pId;
+		this.pImage1 = pImage1;
+		this.pName = pName;
+		this.pBrand = pBrand;
+		this.pPrice = pPrice;
+	}
 	public int getwId() {
 		return wId;
 	}
@@ -44,5 +55,4 @@ public class WishListDto {
 		this.pPrice = pPrice;
 	}
 	
-
 }
