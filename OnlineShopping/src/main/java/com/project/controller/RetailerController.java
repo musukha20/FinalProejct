@@ -32,7 +32,7 @@ import com.project.service.ProductService;
 import com.project.service.RetailerService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin()
 public class RetailerController {
 
 	@Autowired
@@ -93,10 +93,10 @@ public class RetailerController {
 		String targetFile1 = tempDownloadPath + product.getProductImage1();
 		// the original image location
 
-		//String sourceFile = "C:/Users/RSP/Desktop/products/" + product.getProductImage1();
+		String sourceFile = "C:/Users/RSP/Desktop/products/" + product.getProductImage1();
 
 
-		String sourceFile = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage1();
+		//String sourceFile = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage1();
 
 
 		try {
@@ -173,5 +173,8 @@ public class RetailerController {
         }
         
     }
+	
+	 
+	
 
 }
