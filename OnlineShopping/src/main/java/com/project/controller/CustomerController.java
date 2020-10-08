@@ -21,6 +21,7 @@ import com.project.dto.LoginStatus;
 
 import com.project.dto.PlacedOrder;
 import com.project.dto.Status;
+import com.project.dto.WishListDto;
 import com.project.entity.Cart;
 import com.project.entity.Temp;
 import com.project.entity.User;
@@ -121,8 +122,6 @@ public class CustomerController {
 		}
 	}
 
-
-
 	@PostMapping(path = "/placeOrder")
 	public String placeOrder(@RequestBody List<CartDto> carts,@RequestParam("payType") String payType) {
 
@@ -146,4 +145,34 @@ public class CustomerController {
 		return customerService.getMyPlacedOrders(uId);
 		
 	} 
+	
+	@GetMapping(path = "/getMyWishlist") //passed
+	public List<WishListDto> getMyWishlist(@RequestParam ("uId") String uId)
+	{
+		return this.customerService.getWishlistValues(Integer.parseInt(uId));
+	}
+	
+	
+	@GetMapping(path = "/addToMyWishlist") //passed
+	public String updateMyWishlist(@RequestParam ("uId") String uId, @RequestParam ("pId") String pId)
+	{
+		boolean ok = this.customerService.addToWishlist(Integer.parseInt(uId),Integer.parseInt(pId));
+		if(ok==true)
+			return "Product Added to Wishlist Successfull";
+		return "Cannot Add Product to Wishlist";
+	}
+	
+	@DeleteMapping(path = "/deleteMyWishlist") //passed
+	public ResponseEntity<HttpStatus> deleteMyWishlist(@RequestParam ("wId") String wId)
+	{
+		try
+		{
+			boolean ok = this.customerService.deleteWishlist(Integer.parseInt(wId));
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
+		catch(Exception e)
+		{
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 }

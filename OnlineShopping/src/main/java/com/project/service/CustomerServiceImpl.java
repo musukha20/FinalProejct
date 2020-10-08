@@ -22,6 +22,7 @@ import com.project.repository.CartDao;
 import com.project.repository.OTPDao;
 import com.project.repository.PlaceOrderDao;
 import com.project.repository.UserDao;
+import com.project.repository.WishlistDao;
 
 @Transactional
 @Service
@@ -35,6 +36,8 @@ public class CustomerServiceImpl implements CustomerService{
 	private UserDao userDao;
 	@Autowired
 	private OTPDao otpDAO;
+	@Autowired
+	private WishlistDao wishListDao;
 	
 	public int generateOTP()
 	{
@@ -108,29 +111,21 @@ public class CustomerServiceImpl implements CustomerService{
 
 
 	@Override
-	public User getUserById(int uId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
 	public List<WishListDto> getWishlistValues(int uId) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public boolean addToWishlist(int uId, int pId) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.userDao.getWishlistOfUser(uId);
 	}
 
 
 	@Override
 	public boolean deleteWishlist(int wId) throws WishlistException {
 		// TODO Auto-generated method stub
-		return false;
+		return this.wishListDao.deleteWishlist(wId);
+	}
+
+	@Override
+	public boolean addToWishlist(int uId, int pId) {
+		// TODO Auto-generated method stub
+		return this.wishListDao.addToWishlist(uId, pId);
 	}
 }
