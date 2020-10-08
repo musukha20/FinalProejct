@@ -145,9 +145,14 @@ public class ProductDaoImpl implements ProductDao {
 		}
 		else {
 			System.out.println("Filtering according to Range");
-			String q = "from Product where brand =: z and price between :x and :y";
+			String q;
+			if(brand!="") { q = "from Product where brand =: z and price between :x and :y";}
+			else {
+				System.out.println("into else block");
+				q = "from Product where price between :x and :y";
+			}
 			Query query = (Query)this.entityManager.createQuery(q);
-			query.setParameter("z", brand);
+			if(brand!="") query.setParameter("z", brand);
 			query.setParameter("x", start);
 			query.setParameter("y", end);
 			List<Product> pro = query.getResultList();
