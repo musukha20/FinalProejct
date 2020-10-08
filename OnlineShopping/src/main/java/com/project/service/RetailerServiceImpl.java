@@ -34,8 +34,11 @@ public class RetailerServiceImpl implements RetailerService {
 	}
 
 	@Override
-	public int additionOfProduct(Product product, Retailer retailer) {
-		retailerRepository.addProduct(product, retailer);
+	public int additionOfProduct(Product product, int retailerId) {
+		Retailer retailer = new Retailer();
+		retailer = retailerRepository.findById(retailerId);
+		product.setRetailer(retailer);
+		retailerRepository.addProduct(product);
 		return 0;
 	}
 	

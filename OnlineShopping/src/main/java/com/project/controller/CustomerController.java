@@ -28,8 +28,9 @@ import com.project.entity.User;
 import com.project.exception.CustomerServiceException;
 import com.project.service.CustomerService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class CustomerController {
 
 	@Autowired

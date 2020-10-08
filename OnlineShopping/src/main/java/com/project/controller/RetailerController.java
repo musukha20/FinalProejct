@@ -58,9 +58,13 @@ public class RetailerController {
 	}
 
 	@PostMapping(path = "/addproduct")
-	public Status addProduct(@RequestBody Product product, Retailer retailer) {
+	public Status addProduct(@RequestBody Product product,@RequestParam("retailerId") int retailerId) {
 		try {
-			int id = retailerService.additionOfProduct(product, retailer);
+			Retailer retailer = new Retailer();
+			retailer.setId(retailerId);
+			product.setRetailer(retailer);
+			System.out.println(product);
+			int id = retailerService.additionOfProduct(product, retailerId);
 			AddProductStatus status = new AddProductStatus();
 			status.setProductId(product.getProductId());
 			status.setStatus(true);
@@ -136,7 +140,7 @@ public class RetailerController {
 			String sourceFile3 = "C:/Users/RSP/Desktop/products/" + product.getProductImage3();
 			String sourceFile4 = "C:/Users/RSP/Desktop/products/" + product.getProductImage4();
 
-			String sourceFile = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage1();
+			//String sourceFile = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage1();
 			//String sourceFile = "C:Users/w/Desktop/picture/" + product.getProductImage1();
 
 			try {

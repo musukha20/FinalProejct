@@ -22,8 +22,8 @@ public class RetailerRepositoryImpl implements RetailerRepository {
 	}
 	
 	@Override
-	public Retailer findById(int id) {
-		return entityManager.find(Retailer.class,id);
+	public Retailer findById(int retailerId) {
+		return entityManager.find(Retailer.class,retailerId);
 	}
 	
 	@Override
@@ -39,7 +39,7 @@ public class RetailerRepositoryImpl implements RetailerRepository {
 	}
 
 	@Override
-	public int addProduct(Product product, Retailer retailer) { //This is the DAO class
+	public int addProduct(Product product) { //This is the DAO class
 		
 		
 		Product updatedProduct = (Product) entityManager.merge(product);			//this is the entity class

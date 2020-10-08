@@ -50,13 +50,12 @@ public class Product implements Serializable{
 	@OneToMany(mappedBy="product",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<OrderDetail> orderDetail;
-	
 	@OneToMany(mappedBy="product",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Cart> cart;
-
-	@OneToMany(mappedBy="product",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JsonIgnore
+	@OneToMany(mappedBy="product",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+
 	private List<Wishlist> wishlist;
 
 
@@ -181,14 +180,14 @@ public class Product implements Serializable{
 		this.orderDetail = orderDetail;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Product [productId=" + productId + ", name=" + name + ", price=" + price + ", quantity=" + quantity
-//				+ ", category=" + category + ", retailer=" + retailer + ", brand=" + brand + ", description="
-//				+ description + ", productImage1=" + productImage1 + ", productImage2=" + productImage2
-//				+ ", productImage3=" + productImage3 + ", productImage4=" + productImage4 + ", orderDetail="
-//				+ orderDetail + ", cart=" + cart + ", wishlist=" + wishlist + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", name=" + name + ", price=" + price + ", quantity=" + quantity
+				+ ", category=" + category + ", retailer=" + retailer + ", brand=" + brand + ", description="
+			+ description + ", productImage1=" + productImage1 + ", productImage2=" + productImage2
+		+ ", productImage3=" + productImage3 + ", productImage4=" + productImage4 + ", orderDetail="
+				+ orderDetail + ", cart=" + cart + ", wishlist=" + wishlist + "]";
+	}
 	
      
 }
