@@ -131,10 +131,10 @@ public class RetailerController {
 			String targetFile4 = tempDownloadPath + product.getProductImage4();
 			// the original image location
 
-			String sourceFile1 = "C:/Users/RSP/Desktop/products/" + product.getProductImage1();
-			String sourceFile2 = "C:/Users/RSP/Desktop/products/" + product.getProductImage2();
-			String sourceFile3 = "C:/Users/RSP/Desktop/products/" + product.getProductImage3();
-			String sourceFile4 = "C:/Users/RSP/Desktop/products/" + product.getProductImage4();
+			String sourceFile1 = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage1();
+			String sourceFile2 = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage2();
+			String sourceFile3 = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage3();
+			String sourceFile4 = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage4();
 
 			String sourceFile = "C:/Users/Windows-10/Desktop/products/" + product.getProductImage1();
 			//String sourceFile = "C:Users/w/Desktop/picture/" + product.getProductImage1();
