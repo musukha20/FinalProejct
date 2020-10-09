@@ -33,6 +33,8 @@ public class Retailer implements Serializable{
 	private String address;
 	private String email;
 	
+	
+	
 	@Column(name="phone_no")
 	private int phoneNo;
 	
@@ -122,12 +124,12 @@ public class Retailer implements Serializable{
 		this.admin = admin;
 	}
 
-	/*@Override
+	@Override
 	public String toString() {
 		return "Retailer [id=" + id + ", name=" + name + ", address=" + address + ", email=" + email + ", phoneNo="
 				+ phoneNo + ", password=" + password + ", admin=" + admin + ", product=" + product + ", stock=" + stock
 				+ "]";
 	}
-*/
+
 	
 }
